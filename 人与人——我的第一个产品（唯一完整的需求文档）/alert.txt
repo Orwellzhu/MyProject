@@ -1,0 +1,51 @@
+			var dialogBox = api.require('dialogBox');
+			dialogBox.alert({
+		    texts: {
+		        title: '确认',
+		        content: "一旦选择接收人将无法更改",
+		        leftBtnTitle: '取消',
+		        rightBtnTitle: '确认'
+		    },
+		    styles: {
+		        bg: '#fff',
+		        w: 300,
+		        title: {
+		            marginT: 20,
+		            icon: 'widget://res/gou.png',
+		            iconSize: 40,
+		            titleSize: 14,
+		            titleColor: '#000'
+		        },
+		        content: {
+		            color: '#000',
+		            size: 14
+		        },
+		        left: {
+		            marginB: 7,
+		            marginL: 20,
+		            w: 130,
+		            h: 35,
+		            corner: 2,
+		            bg: '#f2f2f2',
+		            color: '#e53939',
+		            size: 12
+		        },
+		        right: {
+		            marginB: 7,
+		            marginL: 10,
+		            w: 130,
+		            h: 35,
+		            corner: 2,
+		            bg: '#e53939',
+		            color: '#ffffff',
+		            size: 12
+		        }
+		    }
+		}, function(ret) {
+		    if (ret.eventType == 'left') {
+		        var dialogBox = api.require('dialogBox');
+		        dialogBox.close({
+		            dialogName: 'alert'
+		        });
+		    }
+		});

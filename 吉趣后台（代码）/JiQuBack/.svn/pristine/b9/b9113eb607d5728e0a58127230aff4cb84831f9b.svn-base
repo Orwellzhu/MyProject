@@ -1,0 +1,39 @@
+
+<style type="text/css">
+
+	canvas {
+		background-color: #aaa;
+		vertical-align: middle;
+		opacity: 1;
+		border-top: solid 1px #000;
+	}
+	@media all and (min-width: 480px) and (max-height: 479px) {
+		canvas {
+			-webkit-transform: translateY(-80px) rotate(-90deg);
+			-moz-transform: translateY(-80px) rotate(-90deg);
+			transform: translateY(-80px) rotate(-90deg);
+		}
+	}
+
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="alert alert-danger" role="alert" style="text-align: center;"><strong>Sorry,You do not have permission</strong></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid">
+		<div style="margin: 0 auto;width: 320px;padding-top:50px; ">	
+				<canvas id="canvas1" width="320" height="480"></canvas>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script src="components/powerFail/js/MyCtx.min.js"></script> 
+<script src="components/powerFail/js/aa.cc.min.js"></script> 
+

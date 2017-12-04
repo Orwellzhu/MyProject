@@ -1,0 +1,142 @@
+
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li><a href="#">用户管理</a></li>
+			  <li><a href="#">账户管理</a></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">搜索</button>
+		      </span>
+		    </div>
+		</div>
+
+
+		<div class="col-lg-2">
+			<button type="button" class="btn  btn-primary"> 创建用户 </button>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 20px">
+		<div class="container-fluid" >
+	        <table class="table table-bordered table-hover">
+	            <tbody>
+	            	<tr class="active">
+		                <th width="3%">序号</th>
+		                <th width="10%">账户</th>
+		                <th width="10%">姓名</th>
+		                <th width="10%">密码</th>  
+		                <th width="15%">昵称</th>
+		                <th width="15%">电话</th>
+		                <th width="15%">权限</th>
+		                <th >操作</th>
+		            </tr>
+	            </tbody>
+	            <tbody id="arcListView">
+					<tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid">
+			<nav aria-label="Page navigation">
+			  <ul class="pagination">
+			    <li>
+			      <a href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">...</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li>
+			      <a href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+

@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#bannerManage">轮播图管理</a></li>
+		  <li><a >轮播图修改</a></li>
+		</ol>
+	</div>
+</div>

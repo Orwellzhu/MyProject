@@ -1,0 +1,23 @@
+ZCC.component.articlePublic_NewArticle=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	};
+
+	obj.prototype={
+		constructor:obj,
+		init:function(){
+		},
+		//初始化日期
+		initClender:function(){},
+		//获取输入的标题、日期、编辑器内容
+		getDate:function(){},
+		//绑定底部按钮事件
+		bindButtonEvent:function(){
+
+		},
+		//上传图片
+		uploadPic:function(){},
+
+	}
+	return obj;
+})(jQuery,this)

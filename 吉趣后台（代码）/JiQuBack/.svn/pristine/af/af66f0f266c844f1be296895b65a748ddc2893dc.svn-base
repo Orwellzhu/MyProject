@@ -1,0 +1,194 @@
+<style type="text/css">
+	.KJT_content{
+		float: left;
+		width: 46%;
+		border: 1px solid #ccc;
+		margin: 10px 0 15px 40px;
+		height: 740px;
+		border-radius: 6px;
+	}
+	.KJT_comment{
+		float: right;
+		width: 46%;
+		border: 1px solid #ccc;
+		margin: 10px 40px 15px 0;
+		height: 740px;
+		border-radius: 6px;
+	}
+	.KJT_header{
+		background: #EEEEEE;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		border-radius: 6px 6px 0 0;
+
+	}
+	.KJT_body{
+		height: 701px;
+		border-radius: 0 0 4px 4px;
+		padding:12px 13px 15px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		background: #fdfdfd;
+	}
+	#imgbox,#imgbox0{
+		padding: 0 18px;
+		height: auto;
+		overflow: hidden;
+
+	}
+	#imgbox>div{
+            width: 49%;
+            height: 250px;
+            margin-top: 10px;
+            overflow: hidden;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    #imgbox>div:nth-child(odd) {
+            float: left;
+        }
+
+    #imgbox>div:nth-child(even) {
+            float: right;
+        }
+    #imgbox0>div{
+            width: 49%;
+            height: 250px;
+            margin-top: 10px;
+            overflow: hidden;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    #imgbox0>div:nth-child(odd) {
+            float: left;
+        }
+
+    #imgbox0>div:nth-child(even) {
+            float: right;
+        }
+    .KJT_head{
+    	height: 82px;
+    	padding: 10px 18px 0;
+    	overflow: hidden;
+    }
+    .KJT_headL{
+    	width: 66%;
+    	float: left;
+    }
+    .KJT_headR{
+    	float: right;
+    }
+    .headimg,.headimg0{
+    	width: 60px;
+    	height: 60px;
+    	float: left;
+    	border-radius: 30px;
+    }
+    .name_date{
+    	width: 175px;
+    	height: 60px;
+    	margin-left: 25px;
+    	float: left;
+    	padding: 2px 0;
+    }
+    .name,.name0{
+    	font-size: 20px;
+    }
+    .date,.date0{
+    	font-size: 14px;
+    	margin-top: 8px;
+    }
+    .btn{
+    	padding: 6px;
+    }
+    .interval{
+    	background: rgb(240,240,240);
+    	height: 2px;
+    	margin-top: 10px;
+    	margin-bottom: 6px;
+    }
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息管理</li>
+		  <li><a href="#formManage">论坛管理</a></li>
+		  <li><a id="ktj_breadcrumb">帖子详情</a></li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="container-fluid">
+		<div class="KJT_content">
+			<div class="KJT_header">内容</div>
+			<div class="KJT_body kjtcontent">
+				<div class="KJT_head">
+					<div class="KJT_headL">
+						<img class="headimg" >
+						<div class="name_date">
+							<div class="name"></div>
+							<div class="date"></div>
+						</div>
+					</div>
+					<div class="KJT_headR">
+						<button type="button" class="btn btn-default kjtbtn2">删除</button>
+
+						<a class="aLabel"><button type="button" class="btn btn-default KJT_report"></button></a>
+					</div>
+				</div>
+				<div class="ZCC-content ZCC-con0">
+						
+				</div>
+				<div id="imgbox">
+					<!-- <div class = "pic" style="background-image:url('');"></div> -->
+				</div>
+			</div>
+		</div>
+		<div class="KJT_comment">
+			<div class="KJT_header">评论</div>
+			<div class="KJT_body no_comment">
+				<!-- <div class="KJT_head">
+					<div class="KJT_headL">
+						<img class="headimg0" >
+						<div class="name_date">
+							<div class="name0"></div>
+							<div class="date0"></div>
+						</div>
+					</div>
+					<div class="KJT_headR">
+						<button type="button" class="btn btn-default KJT_report0"></button>
+					</div>
+				</div>
+				<div class="ZCC-content ZCC-con1">
+
+				</div>
+				<div id="imgbox0">
+					<div class = "pic" style="background-image:url('');"></div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+<script src="components/infoManage/formManage/checkforum.js"></script>
+<script type="text/javascript">
+	new KJT.component.formManage_Check({
+		//面包屑
+		$ktj_breadcrumb:$("#ktj_breadcrumb"),
+		// 内容
+		$content:$(".ZCC-con0"),
+		$imgbox:$("#imgbox"),
+		$headimg:$(".headimg"),
+		$name:$(".name"),
+		$date:$(".date"),
+		$KJT_report:$(".KJT_report"),
+		$kjtcontent:$(".kjtcontent"),
+		$aLabel:$(".aLabel"),
+		// 评论
+		$no_comment:$(".no_comment"),
+	});
+</script>

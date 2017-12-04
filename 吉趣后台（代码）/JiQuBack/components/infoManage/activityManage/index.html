@@ -1,0 +1,61 @@
+
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li><a >信息管理</a></li>
+			  <li><a >活动管理</a></li>
+			</ol>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="container-fluid" >
+	        <table class="table table-bordered table-hover">
+	            <tbody>
+	            	<tr class="active">
+		                <th width="3%">序号</th>
+		                <th width="20%">活动名称</th>
+		                <th width="10%">发布单位</th>  
+		                <th width="10%">发布时间</th>
+		                <th width="10%">活动时间</th>
+		                <th width="10%">状态</th>
+		                <th width="10%">报名人数</th>
+		                <th >操作</th>
+		            </tr>
+	            </tbody>
+	            <tbody id="arcListView">
+
+				<!-- 	<tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>已发布</th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">删除</button>
+		                	<button type="button" class="btn btn-danger btn-sm">置顶</button>
+		                </th>
+		            </tr> -->
+
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	<div class="row">
+	<div class="container-fluid">
+		<ul class="pagination" id="LGQ-pager">
+			
+	    </ul>
+	</div>
+</div>
+<script src="components/infoManage/activityManage/index.js"></script>
+<script type="text/javascript">
+	var activityManage=new LGQ.component.activityManage({
+		$TableContentWrapper:$("#arcListView"),
+		$PagerWrapper:$("#LGQ-pager"),
+	});
+</script>
+

@@ -1,0 +1,42 @@
+<style type="text/css">
+	 .ZCC-bannerbox{height: 300px;width: 100%;margin-top: 20px;padding: 10px;padding-top: 50px;position: relative;}
+	 .ZCC-add{height: 50px;width: 50px;background: white;position: absolute;top: 25px;left: 50%;margin-left:-25px;border: 1px solid #cccccc;border-radius:100%;background:url("components/proManage/bannerManage/image/pen.png") no-repeat #fff;background-position:center;background-size:30px 30px;cursor:pointer}
+	 .ZCC-add:hover {
+        background-color: #f5f5f5;
+    }
+	 .ZCC-picbox{height: 240px;width: 375px;margin: auto;border: 1px solid #cccccc;border-radius:10px}
+	 .ZCC-picbox-last{background:url("components/proManage/bannerManage/image/add.png") no-repeat #fff;background-position:center;background-size:50px 50px;cursor:pointer}
+	 .ZCC-picbox-last:hover {background-color: #f5f5f5;}
+	 .ZCC-picbox img{width: 100%;height: 100%;border-radius:10px}
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#">轮播图管理</a></li>
+		</ol>
+	</div>
+</div>
+<div class="row" id="ZCC-Banner">
+<!-- 	<div class="col-lg-4">
+		<div class="ZCC-bannerbox">
+			<div class="ZCC-add"></div>
+			<div class="ZCC-picbox">
+				<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509536977510&di=ddc4f4785ce3c7c97bfe54261c42005d&imgtype=0&src=http%3A%2F%2Fwww.th7.cn%2Fd%2Ffile%2Fp%2F2014%2F08%2F11%2F859d3f8152333269eee262c394fe1537.png">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-4">
+		<div class="ZCC-bannerbox">
+			<div class="ZCC-picbox ZCC-picbox-last">
+			</div>
+		</div>
+	</div> -->
+</div>
+<script src="components/proManage/bannerManage/index.js"></script>
+<script type="text/javascript">
+	var bannerManage=new ZCC.component.bannerManage({
+		$BannerWrapper:$("#ZCC-Banner"),
+	});
+</script>

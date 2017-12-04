@@ -1,0 +1,15 @@
+ZCC.component.articlePublic=(function($,window,undefined){
+	var obj=function(option){
+		this.init();
+	};
+
+	obj.prototype={
+		constructor:obj,
+		init:function(option){
+			alert("success");
+		}
+	}
+
+	return obj;
+
+})(jQuery,this)

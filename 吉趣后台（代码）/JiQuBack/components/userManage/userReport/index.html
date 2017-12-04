@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a href="#">用户管理</a></li>
+		  <li><a href="#">用户反馈</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+        <table class="table table-bordered table-hover">
+            <tbody>
+            	<tr class="active">
+	                <th width="3%">序号</th>
+	                <th width="40%">反馈内容</th>
+	                <th width="10%">联系方式</th>
+	                <th width="10%">反馈时间</th>
+	                <th width="10%">反馈人</th>  
+	                <th >操作</th>
+	            </tr>
+            </tbody>
+            <tbody id="arcListView">
+				<!-- <tr>
+	                <th>1</th>
+	                <th>21150422大海画家大海画家大海画家大海画家大海画家大海画家</th>
+	                <th>15601779516</th>
+	                <th>大海画家</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+	                </th>
+	            </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+	<div class="container-fluid">
+		<ul class="pagination" id="ZCC-pager">
+
+	    </ul>
+	</div>
+</div>
+<script src="components/userManage/userReport/index.js"></script>
+<script type="text/javascript">
+	var userReport=new ZCC.component.userReport({
+		$TableContentWrapper:$("#arcListView"),
+		$Pager:$("#ZCC-pager"),
+	});
+</script>

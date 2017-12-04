@@ -1,0 +1,31 @@
+
+ZCC.component.ourpageManage=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	}
+	
+	obj.prototype={
+		constructor:obj,
+		$Edit:"",//保存编辑器$
+		init:function(option){
+			this.$Edit=option.$Edit;
+			console.log(this.$Edit);
+			this.$Content=option.$Content;
+			console.log(this.$Content);
+
+			window.setInterval(this.showEditContent,500,this); //ZCC：必须传this指针，不然this将被改变，函数内无法获得obj指针
+		},
+		//获取编辑器内，内容
+		getEditContent:function(){
+			var text=this.$Edit.html();
+			return text;
+		},
+		//展示内容
+		showEditContent:function(point){
+			var _this=point;
+			_this.$Content.html( _this.getEditContent() );
+		}
+	}
+
+	return obj;
+})(jQuery,window)

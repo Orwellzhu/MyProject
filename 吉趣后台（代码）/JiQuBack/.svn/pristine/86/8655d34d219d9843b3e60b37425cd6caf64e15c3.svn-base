@@ -1,0 +1,246 @@
+ZCC.component.accountManage=(function($,window,undefined){
+	//1.构造函数
+	var obj = function(option){	
+		this.loading();	
+		this.init(option);		
+	}						
+	//2.方法
+	obj.prototype={
+		constructor:obj,
+		//基本属性
+		numbSkip:0,
+		numbLimit:10,		
+		init:function(option){
+			this.ifsearch=false;//是否是搜索
+			this.textsearch="";//搜索关键词
+			this.$TableContentWrapper=option.$TableContentWrapper;//表格容器
+			this.$Pager=option.$Pager;//页码
+			this.$PagerSkip=option.$Pager.next(".pageJump");//页码后面的跳转框
+			this.$SearchBox=option.$SearchBox;//搜索框
+			//绑定事件
+			this.bindsearch();
+			this.bindDelEvent();
+			//请求数据
+			this.requestCount();//请求数据条数
+			this.requestData();//请求表格数据
+			
+		},
+		//初始化页码
+		initPager:function(numb){
+			var _this=this;
+			//如果页码小于等于1则隐藏页码跳转框
+			if(numb<2){
+				this.$PagerSkip.css("display","none");
+			}else{
+				this.$PagerSkip.css("display","inline-block");
+			}
+			ZCC.component.Page({
+					num:numb,				//页码数
+					startnum:1,				//指定页码
+					elem:_this.$Pager,
+					callback:function(n){	//回调函数
+						console.log(n);
+						_this.numbSkip=_this.numbLimit*(n-1);
+						//判断是否是搜索
+						if(!_this.ifsearch){
+							_this.requestData();
+						}else{
+							_this.requestSearchDaTa(_this.textsearch);
+						}
+					}
+			});
+		},
+		//请求数据条数
+		requestCount:function(){
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/MyUser/count",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  var page=Math.ceil(data.count/_this.numbLimit);
+			  console.log("page:"+page);
+			  _this.initPager(page);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			});
+			
+		},
+		//请求表格数据
+		requestData:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/MyUser",
+				"data":{
+			  		"filter": {
+					    "skip": _this.numbSkip,
+				    	"limit": _this.numbLimit,
+				    	"fields": ["Name","Nickname","Password","HeadImgUrl","AccountNumber","Phone","id","Role","createdAt"],
+				    	"order": "createdAt DESC",
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			});
+		},
+		//请求搜索数据
+		requestSearchDaTa:function(text){
+			this.loading();
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/MyUser",
+				"data":{
+			  		"filter": {
+					    "skip": _this.numbSkip,
+				    	"limit": _this.numbLimit,
+				    	"fields": ["Name","Nickname","Password","HeadImgUrl","AccountNumber","Phone","id","Role"],
+				    	"where":{"or":[{"Phone": {"like": text+"+"}},{"Role": {"like": text+"+"}},{"AccountNumber": {"like": text+"+"}},{"Nickname": {"like": text+"+"}},{"Name": {"like": text+"+"}}]},
+				    	"order": "AccountNumber DESC",
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			});
+
+		},
+		//DOM操作
+		strDOM:function(retArray){
+			var str="";
+			for(var i=0;i<retArray.length;i++){
+				str+=this.strLink(retArray[i],i+1);
+			}
+			this.$TableContentWrapper.html(str);
+			this.loaded();	
+			return true;
+		},
+		//字符串拼接
+		strLink:function(ret,id){
+			var strBox=new Array();
+			var phonestr;
+			if(ret.Phone==undefined){phonestr=""}else{
+				phonestr=ret.Phone;
+			}
+			if(!ret.Role){
+				ret.Role="普通用户";
+			}
+			strBox=['<tr>'
+		                ,'<th>'+id+'</th>'
+		                ,'<th>'+ret.AccountNumber+'</th>'
+		                ,'<th>'+ret.Name+'</th>'
+		                ,'<th>'+ret.Password+'</th>'
+		                ,'<th>'+ret.Nickname+'</th>'
+		                ,'<th>'+phonestr+'</th>'
+		                ,'<th>'+ret.Role+'</th>'
+		                ,'<th>'
+		                	,'<a href="#accountManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button></a> '
+		                	,'<a href="#accountManage_Edit?id='+ret.id+'"><button type="button" class="btn btn-primary btn-sm">编辑</button></a> '
+		                	,'<button type="button" class="btn btn-danger btn-sm delbtn" data-id="'+ ret.id +'">删除</button> '
+		                ,'</th>'
+		            ,'</tr>'];
+			return strBox.join('');
+		},
+		//绑定搜索功能
+		bindsearch:function(){
+			var _this=this;
+			this.$SearchBox.off('click.xdd').on('click.xdd', 'span > #ZCC-search-button', function(ev){
+				ev.stopPropagation();
+				//获取输入框内容
+				var textarea=_this.$SearchBox.children("#ZCC-search-input");
+				_this.loading();
+				_this.textsearch=textarea.val();
+				if(_this.textsearch){
+					var text=_this.textsearch;
+					_this.ifsearch=true;//进入查询状态
+					_this.numbSkip=0;
+					//查询搜索条数；重置pager
+					$.ajax({
+						"url": "https://d.apicloud.com/mcm/api/MyUser",
+						"data":{
+					  		"filter": {
+							    "skip": _this.numbSkip,
+						    	"limit":2000,
+						    	"fields": ["Name","Nickname","Password","HeadImgUrl","AccountNumber","Phone","id","Role"],
+						    	"where":{"or":[{"Phone": {"like": text+"+"}},{"AccountNumber": {"like": text+"+"}},{"Nickname": {"like": text+"+"}},{"Name": {"like": text+"+"}}]},
+						    	"order": "AccountNumber DESC",
+							}
+						},
+						"cache": false,
+						"headers": apiHeader,
+						"type": "GET"
+					}).success(function (data, status, header) {
+						var page=Math.ceil(data.length/_this.numbLimit);
+						_this.initPager(page);
+					}).fail(function (header, status, errorThrown) {
+						console.log(JSON.stringify(header));
+					});
+					_this.requestSearchDaTa(_this.textsearch);
+				}else{
+					//还原
+					_this.ifsearch=false;
+					_this.numbSkip=0;
+					_this.requestCount();//请求数据条数
+					_this.requestData();//请求表格数据
+				}
+				
+			});
+		},
+		//删除反馈
+		delOneData:function(id){
+			var _this=this;
+			_this.loading();
+			$.ajax({
+				"type": "POST",
+				"url": "https://d.apicloud.com/mcm/api/MyUser/" + id,
+				"data": {
+					"_method": "DELETE"
+				},
+				"cache": false,
+				"headers": apiHeader
+			}).done(function(data, status, header){
+				if(!_this.ifsearch){
+					_this.requestData();
+				}else{
+					_this.requestSearchDaTa(_this.textsearch);
+				}
+				_this.loaded();
+			}).fail(function(err){});
+		},
+		// 给按钮绑定删除事件 
+		bindDelEvent:function(){
+			var _this=this;//obj指针
+			this.$TableContentWrapper.off('click.zcc').on('click.zcc', 'tr > th > .delbtn', function(ev){
+				ev.stopPropagation();
+				var $this = $(this);//被点击的元素
+				var isDel = confirm('确认删除吗？');
+				if (isDel){
+					_this.delOneData($this.attr('data-id'));
+				}
+			});
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		}
+	}
+
+	return obj;	
+})(jQuery,this)	

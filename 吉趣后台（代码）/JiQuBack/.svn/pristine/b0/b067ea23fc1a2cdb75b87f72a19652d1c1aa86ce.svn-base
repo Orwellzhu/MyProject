@@ -1,0 +1,16 @@
+JZY.component.demo = (function(){
+	// 接口方法
+	var init = function(){
+		// layui 接口  ，查看 http://www.layui.com/doc/element/tab.html
+		layui.use('element', function(){
+		  var element = layui.element;
+		  
+		  //…
+		});
+	};
+	
+	// 公开接口
+	return {
+		install: init
+	};
+})();

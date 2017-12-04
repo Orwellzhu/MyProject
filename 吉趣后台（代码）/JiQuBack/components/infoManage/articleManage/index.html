@@ -1,0 +1,70 @@
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li><a href="#">信息管理</a></li>
+			   <li><a href="#">文章管理</a></li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2">
+		    <div class="input-group" id="ZCC-SearchBox">
+			      <input type="text" class="form-control" id="ZCC-search-input" placeholder="Search for..." >
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button" id="ZCC-search-button">搜索</button>
+			      </span>
+		    </div>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 20px">
+		<div class="container-fluid" >
+	        <table class="table table-bordered table-hover">
+	            <tbody>
+	            	<tr class="active">
+		                <th width="3%">序号</th>
+		                <th width="30%">文章标题</th>
+		                <th width="10%">发布者</th>  
+		                <th width="10%">文章状态</th>
+		                <th width="10%">访问量</th>
+		                <th width="10%">发布时间</th>
+		                <th >操作</th>
+		            </tr>
+	            </tbody>
+	            <tbody id="arcListView">
+
+<!-- 					<tr>
+		                <th>1</th>
+		                <th>文章标题</th>
+		                <th>朱陈超</th>
+		                <th>审核中</th>
+		                <th>12</th>
+		                <th>15601779516</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr> -->
+
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	<div class="row">
+	<div class="container-fluid">
+		<ul class="pagination" id="ZCC-pager">
+			
+	    </ul>
+	</div>
+</div>
+<script src="components/infoManage/articleManage/index.js"></script>
+<script type="text/javascript">
+	var articleManage=new LGQ.component.articleManage({
+		$TableContentWrapper:$("#arcListView"),
+		$PagerWrapper:$("#ZCC-pager"),
+		$SearchBox:$("#ZCC-SearchBox"),
+	});
+</script>
+

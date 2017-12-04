@@ -1,0 +1,95 @@
+<style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-header{height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;}
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding:0 100px;overflow-x:hidden;overflow-y:scroll;background: #fdfdfd}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息管理</li>
+		  <li><a href="#articleManage">文章管理</a></li>
+		  <li>文章审查</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+			<div class="ZCC-picbox">
+				<img src="" id="ZCC-HeadImg">
+			</div>
+			<div id="ZCC-inputbox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >文章标题</span>
+				  <input type="text" class="form-control" placeholder="请输入通知标题" id="ZCC-title" readonly="readonly">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >发布日期</span>
+				  <input type="text" class="form-control" placeholder="格式 2017-11-06 16：04" id="ZCC-date" readonly="readonly">
+				</div>
+			</div>
+
+			<div id="ZCC-editBox">
+				<div id="ZCC-editBox-header">内容</div>
+				<div id="ZCC-editBox-body">
+					<div class="ZCC-content">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >文章状态</span>
+				  <select class="form-control"	id="ZCC-status">
+					  <option>等待审核</option>
+					  <option>审核失败</option>
+					  <option>审核通过</option>
+					  <option>隐藏</option>
+					</select>
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >审核理由</span>
+				  <input type="text" class="form-control" placeholder="请输入您的审核理由" id="ZCC-message" >
+				</div>
+
+				<div style="width: 100%;" class="ZCC-margint-10">
+					<div style="width: 500px;margin: 0 auto;overflow: hidden;text-align: center;" id="ZCC-buttonBox">
+						<button type="button" class="btn btn-danger" >&nbsp&nbsp&nbsp&nbsp删除文章&nbsp&nbsp&nbsp&nbsp</button>
+						<button type="button" class="btn btn-primary" >&nbsp&nbsp&nbsp&nbsp递交审核&nbsp&nbsp&nbsp&nbsp</button>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</div>
+
+
+<script src="components/infoManage/articleManage/checkarticle.js"></script>
+<script type="text/javascript">
+	new ZCC.component.articleManage_Check({
+		$title:$("#ZCC-title"),
+		$date:$("#ZCC-date"),
+		$content:$(".ZCC-content"),
+		$imgbox:$("#ZCC-HeadImg"),
+
+		$ButtonBox:$("#ZCC-buttonBox"),
+		$upMsgInput:$("#ZCC-message"),
+		$upStatusInput:$("#ZCC-status"),
+	});
+</script>

@@ -1,0 +1,38 @@
+<style type="text/css">
+	.ZCC-picbox{height: 100%;width:100%;background:url("components/proManage/bannerManage/image/add.png") no-repeat #fff;background-position:center;cursor:pointer}
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#bannerManage">轮播图管理</a></li>
+		  <li><a >轮播图修改</a></li>
+		</ol>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="container-fluid col-lg-4" >
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1" > Title </span>
+		  <input type="text" class="form-control" placeholder="Pleace input banner's title" aria-describedby="basic-addon1">
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row" style="padding-top: 20px">
+	<div class="container-fluid col-lg-4" >
+		  <a  class="thumbnail" style="margin:0;height: 250px">
+		  	<div class="ZCC-picbox"></div>
+		  </a>
+	</div>
+</div>
+
+<div class="row" style="padding-top: 20px">
+	<div class="container-fluid col-lg-4" >
+
+	</div>
+</div>

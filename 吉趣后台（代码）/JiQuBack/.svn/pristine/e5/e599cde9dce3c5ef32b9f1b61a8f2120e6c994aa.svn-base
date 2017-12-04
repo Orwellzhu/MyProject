@@ -1,0 +1,53 @@
+<div class="row"></div>
+<link rel="stylesheet" href="components/JiQuEditor/assets/design/css/trumbowyg.css">   
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#">关于我们</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div style="float:left;width:50%">
+			<div  style="clear:both" id="customized-buttonpane" class="editor"></div>
+		</div>
+		
+		<div style="float:left;width:50%;">
+		    <section style="height:auto;width:100%;background:#f9f9f9;border:1px solid #ddd;width:100%;margin:17px auto;">
+		        <div style="height:auto;width:375px;background:#fefefe;margin:0 auto;">
+		            <div class="orwell-article-title" style="padding:0 1rem;padding-top:1rem;" id="title"></div>
+		            <div style="height:auto;padding:0.5rem 1rem;" id="content"></div>
+		        </div>
+		    </section>
+		</div>
+	</div>
+</div>
+
+
+<script src="components/JiQuEditor/assets/jquery.min.js"></script>
+<script src="components/JiQuEditor/assets/trumbowyg.js"></script>
+<script src="components/JiQuEditor/assets/plugins/base64/trumbowyg.base64.js"></script>
+<script src="components/JiQuEditor/layui/layui.all.js"></script>
+<script type="text/javascript">
+	
+	function getHtmlCode(){
+		alert($('.editor').trumbowyg('html'));
+	}
+
+	var content=new String();
+    window.onload = function(){ 
+        var t1 = window.setInterval(yulan,500); 
+    } 
+    
+    function yulan(){
+        content=$('.editor').trumbowyg('html');
+        title=$("#inputT").val();
+        $("#title").html(title);
+        $("#content").html(content);
+    }
+
+</script>

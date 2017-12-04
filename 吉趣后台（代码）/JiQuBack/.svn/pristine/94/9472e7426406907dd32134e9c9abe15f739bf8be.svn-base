@@ -1,0 +1,408 @@
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height: 1.6;background: #FFF;}
+* {max-width: 100%!important;margin:0;padding:0;font-style:normal;box-sizing: border-box!important;-webkit-box-sizing: border-box!important;word-wrap: break-word!important;}
+body{-webkit-touch-callout:none;position: absolute; width: 100%;margin: 0;padding: 15px !important;font-size:16px;overflow-x:hidden;font-family:"微软雅黑","Microsoft YaHei",Arial,sans-serif;background-color:#FFF;line-height:inherit}
+body{word-break: break-all;	word-wrap: break-word;cursor:text;}
+
+p{clear:both;margin:0 0;min-height:1em;white-space: normal;}
+img{*zoom:1;max-width:100%;*max-width:96%;height:auto !important;}
+iframe{width:301px !important;border:0;background-color:none;}
+iframe,.video_iframe {background-color: #000000;width: 100% !important;position: static;}
+
+::-webkit-scrollbar {   width:5px;height:5px;}
+::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 16px #645654; /*rgba(60,60,60,0.5)*/}
+::-webkit-input-placeholder { /* WebKit browsers */   color:    #ddd;}
+
+/*vote*/
+.vote_area{display:block;}
+.vote_iframe{height:100%;width:100% !important;*width:96% !important;}
+
+blockquote{margin:0;padding-left:10px;border-left:3px solid #DBDBDB;}
+
+ol,ul,dl
+{
+	/* IE7: reset rtl list margin. (#7334) */
+	*margin-right: 0px;
+	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
+	padding: 0 0 0 30px;
+}
+
+table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption{border:1px dashed #ddd;}
+table{margin-bottom:10px;border-collapse:collapse;display:table;width:100%!important}
+td,th{word-wrap:break-word;word-break:break-all;padding:5px 10px;border:1px solid #DDD}
+caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center}
+th{border-top:2px solid #BBB;background:#f7f7f7}
+.ue-table-interlace-color-single{background-color:#fcfcfc}
+.ue-table-interlace-color-double{background-color:#f7faff}
+ td p{margin:0;padding:0;width:auto;height:auto;}
+
+hr{border: 0px;border-top: 1px solid #ccc;}
+img:hover {z-index:-1;cursor:pointer;}
+pre{
+	white-space: pre-wrap; /* CSS 2.1 */
+	word-wrap: break-word; /* IE7 */
+}
+.marker {
+	background-color: Yellow;
+}
+
+span[lang] {font-style: italic;}
+
+figure {
+	text-align: center;
+	border: solid 1px #ccc;
+	border-radius: 2px;
+	background: rgba(0,0,0,0.05);
+	padding: 10px;
+	margin: 10px 20px;
+	display: inline-block;
+}
+
+figure > figcaption {
+	text-align: center;
+	display: block; /* For IE8 */
+}
+em{font-style: italic;}
+
+.135editor {border:0 none;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;}
+h1{font-size:32px;line-height:36px;}
+h2{font-size:27px;line-height:29px;}
+h3{font-size:19px;line-height:23px;}
+h4{font-size:16px;line-height:19px;}
+h5{font-size:14px;line-height:18px;}
+h6{font-size:12px;line-height:14px;}
+
+/** 微信音乐，微信音频的样式 **/
+.db {  display: block;}
+.qqmusic_area {
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+	margin: 17px 1px 16px 0;
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 0;
+	line-height: 0;
+	text-align: left;
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none
+}
+
+.qqmusic_area .unsupport_tips {
+	display: none;
+	padding: 20px 20px 8px;
+	line-height: 1.6;
+	font-size: 16px
+}
+
+.qqmusic_area .pic_qqmusic_default {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -18.5px;
+	margin-left: -18.5px;
+	width: 37px;
+	height: 37px;
+	display: none
+}
+
+.qqmusic_area.unsupport .unsupport_tips {
+	display: block
+}
+
+.qqmusic_area.unsupport .pic_qqmusic_default {
+	display: inline-block
+}
+
+.qqmusic_area.unsupport .icon_qqmusic_switch {
+	display: none
+}
+
+.qqmusic_wrp {
+	border: 1px solid #ebebeb;
+	line-height: 1.6
+}
+
+.qqmusic_bd {
+	position: relative;
+	background-color: #fcfcfc;
+	overflow: hidden
+}
+
+.qqmusic_ft {
+	text-align: right;
+	background-color: #f5f5f5;
+	border-top: 1px solid #ebebeb;
+	line-height: 2.5;
+	overflow: hidden;
+	font-size: 11px;
+	padding: 0 .5em
+}
+
+.play_area {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin-right: 12px;
+	position: relative
+}
+
+.qqmusic_thumb {
+	display: block;
+	width: 60px;
+	height: 60px !important
+}
+
+.access_area {
+	display: block;
+	color: #8c8c8c;
+	min-height: 60px;
+	overflow: hidden;
+	margin-right: 10px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	outline: 0
+}
+
+.qqmusic_songname, .qqmusic_singername {
+	display: block;
+	width: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal
+}
+
+.qqmusic_songname {
+	padding: 7px 0 3px;
+	margin-bottom: -4px;
+	font-size: 16px;
+	color: #3e3e3e
+}
+
+.qqmusic_singername {
+	font-size: 14px;
+	margin-right: 20px
+}
+
+.qqmusic_source {
+	position: absolute;
+	right: 6px;
+	bottom: 6px
+}
+
+.qqmusic_source img {
+	width: 13px;
+	height: 13px;
+	vertical-align: top;
+	border: 0
+}
+
+.qqmusic_love {
+	position: relative;
+	float: right;
+	margin: 10px 0 0 10px;
+	height: 54px;
+	color: #607fa6;
+	width: 53px;
+	text-align: center;
+	font-size: 13px;
+	background: transparent
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_qqmusic_play_sprite.2x26f1f1.png)
+		no-repeat 0 0
+}
+
+.qqmusic_love:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1px;
+	height: 100%;
+	border-left: 1px solid #e7e6e4;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleX(0.5);
+	transform: scaleX(0.5)
+}
+
+.qqmusic_love .icon_love {
+	margin-top: 16px
+}
+
+.qqmusic_love .love_num {
+	display: block
+}
+
+.icon_qqmusic_switch {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -18.5px;
+	margin-left: -18.5px;
+	line-height: 200px;
+	overflow: hidden;
+	cursor: pointer;
+	width: 37px;
+	height: 37px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	outline: 0;
+	background: transparent
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_qqmusic_play_sprite.2x26f1f1.png)
+		no-repeat 0 0;
+	-webkit-background-size: 37px auto;
+	background-size: 37px auto
+}
+
+.qqmusic_playing .icon_qqmusic_switch {
+	background-image:
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_qqmusic_play_sprite.2x26f1f1.png);
+	background-position: 0 -42px
+}
+
+.icon_love {
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	display: inline-block;
+	margin-top: -0.2em;
+	background: transparent
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_love_mini_sprite.2x25ded2.png)
+		no-repeat 0 0;
+	-webkit-background-size: 12px auto;
+	background-size: 12px auto
+}
+
+.loved .icon_love {
+	background-image:
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/qqmusic/icon_love_mini_sprite.2x25ded2.png);
+	background-position: 0 -17px
+}
+
+.audio_area {
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+	margin: 17px 1px 16px 0;
+	font-size: 0;
+	position: relative;
+	font-weight: 400;
+	text-decoration: none;
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none
+}
+
+.audio_area .audio_title {
+	font-weight: 400;
+	font-size: 17px;
+	margin-top: -2px;
+	margin-bottom: -3px;
+	width: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal
+}
+
+.audio_area .audio_length {
+	float: right;
+	font-size: 14px;
+	margin-top: 3px;
+	margin-left: 1em
+}
+
+.audio_area .audio_source {
+	font-size: 14px
+}
+
+.audio_area .progress_bar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: #0cbb08;
+	height: 2px
+}
+
+.audio_area .unsupport_tips {
+	display: none;
+	padding: 20px 20px 8px;
+	line-height: 1.6;
+	font-size: 16px
+}
+
+.audio_area .pic_audio_default {
+	display: none;
+	width: 18px
+}
+
+.audio_area.unsupport .unsupport_tips {
+	display: block
+}
+
+.audio_area.unsupport .pic_audio_default {
+	display: inline-block
+}
+
+.audio_area.unsupport .icon_audio_playing {
+	display: none
+}
+
+.audio_area.unsupport .icon_audio_default {
+	display: none
+}
+
+.audio_wrp {
+	border: 1px solid #ebebeb;
+	background-color: #fcfcfc;
+	overflow: hidden;
+	*zoom: 1;
+	padding: 12px 20px 12px 12px
+}
+
+.audio_info_area {
+	overflow: hidden;
+	*zoom: 1
+}
+
+.audio_play_area {
+	float: left;
+	margin: 9px 22px 10px 5px;
+	font-size: 0;
+	width: 18px;
+	height: 25px
+}
+
+.playing .audio_play_area .icon_audio_playing {
+	display: inline-block
+}
+
+.playing .audio_play_area .icon_audio_default {
+	display: none
+}
+
+.audio_play_area .icon_audio_default {
+	background: transparent
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/audio/icon_audio_unread26f1f1.png)
+		no-repeat 0 0;
+	width: 18px;
+	height: 25px;
+	vertical-align: middle;
+	display: inline-block;
+	-webkit-background-size: 18px auto;
+	background-size: 18px auto
+}
+
+.audio_play_area .icon_audio_playing {
+	background: transparent
+		url(http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/audio/icon_audio_reading_126f1f1.png)
+		no-repeat 0 0;
+	width: 18px;
+	height: 25px;
+	vertical-align: middle;
+	display: inline-block;
+	-webkit-background-size: 18px auto;
+	background-size: 18px auto;
+	-webkit-animation: audio_playing 1s infinite;
+	display: none
+}

@@ -1,0 +1,72 @@
+	<style type="text/css">
+		.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+		.ZCC-picbox{width: 250px;height: 250px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+		.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+		#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+		.ZCC-margint-10{margin-top: 10px}
+		.ZCC-marginb-10{margin-bottom: 10px}
+
+	</style>
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li>用户管理</li>
+			  <li><a href="#accountManage">账户管理</a></li>
+			  <li>账户信息查看</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid" >
+			<div class="ZCC-infobox">
+				<div class="ZCC-picbox " style="margin-bottom: 20px">
+					<img src="" id="ZCC-HeadImg">
+				</div>
+
+				<div id="ZCC-inputbox">
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >姓名</span>
+					  <input type="text" class="form-control" placeholder="Username" id="ZCC-name" readonly="readonly">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >账户</span>
+					  <input type="text" class="form-control" placeholder="Account" id="ZCC-account" readonly="readonly">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >密码</span>
+					  <input type="text" class="form-control" placeholder="Password" id="ZCC-password" readonly="readonly">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >昵称</span>
+					  <input type="text" class="form-control" placeholder="Nickname" id="ZCC-nickname" readonly="readonly">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >权限</span>
+					  <select class="form-control"	id="ZCC-power" disabled="disabled">
+						  <option>普通用户</option>
+						  <option>学生会</option>
+						  <option>团委管理员</option>
+						  <option>吉趣管理员</option>
+						</select>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >电话</span>
+					  <input type="text" class="form-control" placeholder="Phone" id="ZCC-phone" readonly="readonly">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >扣扣</span>
+					  <input type="text" class="form-control" placeholder="QQ" id="ZCC-qq" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="components/userManage/accountManage/check.js"></script>
+	<script type="text/javascript">
+		new ZCC.component.accountManage_Check({
+			$inputBox:$("#ZCC-inputbox"),
+			$headImgBox:$("#ZCC-HeadImg"),
+		});
+	</script>

@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息发布</li>
+		  <li><a href="#articlePublic">文章发布</a></li>
+		  <li>文章编辑</li>
+		</ol>
+	</div>
+</div>

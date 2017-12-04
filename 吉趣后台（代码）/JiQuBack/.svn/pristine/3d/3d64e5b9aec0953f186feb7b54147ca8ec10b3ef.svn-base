@@ -1,0 +1,60 @@
+<style type="text/css">
+	#ZCC-nContent{
+		height:600px;padding:0.5rem 1rem;overflow-x: hidden;overflow-y: scroll;background:url('http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/7767e147196169e5231b86cacb9387ff.png') no-repeat #fff;background-position:center;background-size:100% 100%;
+	}
+	.ZCC-editor-board{height:600px;clear:both;overflow-x: hidden;overflow-y: scroll;}
+	.ZCC-float-l{float:left;width:49%}
+	.ZCC-float-r{float:right;width:49%;}
+	.ZCC-content-board{height:auto;width:100%;background:#f9f9f9;border:1px solid #ddd;width:100%;margin:17px auto;}
+	.ZCC-content-bar{height:auto;width:375px;background:#fefefe;margin:0 auto;}
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#">关于我们</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-float-l">
+			<div   id="customized-buttonpane" class="ZCC-editor ZCC-content ZCC-editor-board">
+				
+			</div>
+		</div>
+		
+		<div class="ZCC-float-r">
+		    <section class="ZCC-content-board" >
+		        <div class="ZCC-content-bar">
+		            <div  class="ZCC-content" id="ZCC-nContent">
+		            	
+		            </div>
+		        </div>
+		    </section>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" style="width: 100%;">
+		<div style="width: 200px;margin: 0 auto;overflow: hidden;">
+			<button type="button" class="btn btn-danger" style="float: left;">&nbsp&nbsp&nbsp&nbsp还原&nbsp&nbsp&nbsp&nbsp</button>
+			<button type="button" class="btn btn-primary" style="float: right;">&nbsp&nbsp&nbsp&nbsp更新&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+</div>
+		<!-- 编辑器 -->
+<script src="components/JiQuEditor/assets/jquery.min.js"></script>
+<script src="components/JiQuEditor/assets/trumbowyg.js"></script>
+<script src="components/JiQuEditor/assets/plugins/base64/trumbowyg.base64.js"></script>	
+<script src="components/proManage/ourpageManage/index.js"></script>
+<script type="text/javascript">
+	new ZCC.component.ourpageManage({
+		$Edit:$("#customized-buttonpane"),
+		$Content:$("#ZCC-nContent"),
+		$ButtonOriginal:$("button:eq(0)"),
+		$ButtonUpdate:$("button:eq(1)"),
+	});
+</script>

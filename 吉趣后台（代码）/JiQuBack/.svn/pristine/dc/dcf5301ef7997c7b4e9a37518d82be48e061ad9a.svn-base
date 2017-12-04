@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>塔米后台管理系统</title>
+		
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/layui.css">
+		<link rel="stylesheet" href="assets/css/app.css" />
+		<link rel="stylesheet" href="components/infomation/index.css" />
+	    <link href="components/webuploader/webuploader.css" rel="stylesheet">
+	    <!-- 页码器 -->
+	    <link rel="stylesheet" href="components/pager/pager.css" />
+	    <!-- 编辑器 -->
+	    <link rel="stylesheet" href="components/JiQuEditor/assets/design/css/trumbowyg.css">   
+
+	</head>
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">吉趣后台管理系统</div>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							<img src="" class="layui-nav-img"> 贤心
+						</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="">基本资料</a>
+							</dd>
+							<dd>
+								<a href="">安全设置</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="">安全退出</a>
+					</li>
+				</ul>
+			</div>
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<ul class="layui-nav layui-nav-tree" id="layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item layui-nav-itemed">
+				          <a class="" href="javascript:;">信息发布</a>
+				          <dl class="layui-nav-child">
+				            <dd><a href="#articlePublic">文章发布</a></dd>
+				            <dd><a href="#activityPublic">活动发布</a></dd>
+				            <dd><a href="#messagePublic">通知发布</a></dd>
+				          </dl>
+				        </li>
+						<li class="layui-nav-item layui-nav-itemed">
+				          <a>信息管理</a>
+				          <dl class="layui-nav-child">
+				            <dd><a href="#articleManage">文章管理</a></dd>
+				            <dd><a href="#activityManage">活动管理</a></dd>
+				            <dd><a href="#messageManage">通知管理</a></dd>
+				            <dd><a href="#formManage">论坛管理</a></dd>
+				          </dl>
+				        </li>
+				        <li class="layui-nav-item">
+				          <a href="#signCheck">签到查看</a>
+				        </li>
+				        <li class="layui-nav-item layui-nav-itemed">
+				          <a>产品管理</a>
+				          <dl class="layui-nav-child">
+				            <dd><a href="#ourpageManage">关于我们</a></dd>
+				            <dd><a href="#bannerManage">轮播图</a></dd>
+				          </dl>
+				        </li>
+				        <li class="layui-nav-item layui-nav-itemed">
+				          <a>用户管理</a>
+				          <dl class="layui-nav-child">
+				            <dd><a href="#accountManage">账户管理</a></dd>
+				            <dd><a href="#userReport">用户反馈</a></dd>
+				          </dl>
+				        </li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="layui-body">
+				<div  class="main">
+					<div class="layui-main" id="view-wrapper" style="padding:20px 0 ">
+						<!-- 内容主体区域 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="assets/js/jquery-1.11.3.min.js"></script>
+		<script src="assets/js/sha1.min.js"></script>	
+	    <script src="assets/js/common.js"></script>
+	    <script src="assets/layui.all.js"></script>
+	    <script src="assets/js/getComponentTemplate.js"></script>
+	    <script src="assets/js/cookie.js"></script>
+	    <script src="assets/js/doT.js"></script>
+	    <script src="assets/js/dom_append.js"></script>
+
+		<!-- 引用组件 js 文件 -->
+		<script src="components/infomation/index.js"></script>
+		<!-- 测试组件 -->
+		<script src="components/demo/index.js"></script>
+		<!-- ueditor , webuploader js 文件 -->
+		<script src="components/webuploader/webuploader.js"></script>
+		<!-- 页面器 -->
+		<script src="components/pager/pager.js"></script>
+
+		<script>
+			new JZY.server.getComponentTemplate({
+				$sidebarWrapper: $('#layui-nav-tree'),
+				$viewWrapper: $('#view-wrapper')
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-header{height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;}
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding: 100px;overflow-x:hidden;overflow-y:scroll}
+	.ZCC-alertBox{width: 80%;height: auto;margin: 0 auto;margin-top: 10px}
+	.ZCC-content-height{height: 600px;overflow-x:hidden;overflow-y:scroll;padding: 10px 50px;}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息发布</li>
+		  <li><a href="#activityPublic">我的活动</a></li>
+		  <li>活动发布</li>
+		</ol>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+			<div class="ZCC-picbox">
+				<img src="" id="ZCC-HeadImg">
+			</div>
+
+			<div style="display: inline;" class="ZCC-marginb-10" id="ZCC-updataImg">
+				<button type="button" class="btn btn-default " >&nbsp&nbsp&nbsp&nbsp上传&nbsp&nbsp&nbsp&nbsp</button> 
+			</div>
+			
+			<div id="ZCC-inputbox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >活动名称</span>
+				  <input type="text" class="form-control" placeholder="请输入活动名称" id="ZCC-title">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >活动地点</span>
+				  <input type="text" class="form-control" placeholder="请输入活动地点" id="ZCC-address">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >活动时间</span>
+				  <input type="text" class="form-control" placeholder="格式 2017-11-06 16：04" id="ZCC-date">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >参与方式</span>
+				  <input type="text" class="form-control" placeholder="请输入活动联系QQ群、负责人联系方式" id="ZCC-contactway">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >活动主办方</span>
+				  <input type="text" class="form-control" placeholder="请输入活动主办方" id="ZCC-sponsor">
+				</div>
+			</div>
+
+			<div  class="ZCC-alertBox">
+				<div class="alert alert-danger" role="alert" style=""><strong>EORROR!</strong> <span id="ZCC-ErrorContent"></span></div>
+			</div>
+
+			<div id="ZCC-editBox">
+				<div id="ZCC-editBox-header">编辑器</div>
+				<div id="customized-buttonpane" class="ZCC-content ZCC-content-height"></div>
+			</div>
+			<div  class="ZCC-alertBox">
+				<!-- 上传失败 -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div style="width: 500px;margin: 0 auto;overflow: hidden;text-align: center;" id="ZCC-buttonBox">
+			<button type="button" class="btn btn-danger" style="float: left;">&nbsp&nbsp&nbsp&nbsp删除活动&nbsp&nbsp&nbsp&nbsp</button>
+			<button type="button" class="btn btn-default" >&nbsp&nbsp&nbsp&nbsp保存草稿&nbsp&nbsp&nbsp&nbsp</button>
+			<button type="button" class="btn btn-primary" style="float: right;">&nbsp&nbsp&nbsp&nbsp重新审核&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+</div>
+
+<!-- 编辑器 -->
+<script src="components/JiQuEditor/assets/jquery.min.js"></script>
+<script src="components/JiQuEditor/assets/trumbowyg.js"></script>
+<script src="components/JiQuEditor/assets/plugins/base64/trumbowyg.base64.js"></script>	
+
+
+<script src="components/infoPublic/activityPublic/revise.js"></script>
+<script type="text/javascript">
+
+	new ZCC.component.activityPublic_Revise({
+		$upTitleInput:$("#ZCC-title"),
+		$upAddressInput:$("#ZCC-address"),
+		$upDateInput:$("#ZCC-date"),
+		$upContactwayInput:$("#ZCC-contactway"),
+		$upSponsorInput:$("#ZCC-sponsor"),
+		$upImgBox:$("#ZCC-HeadImg"),
+		$Editor:$("#customized-buttonpane"),
+		$ImgButton:$("#ZCC-updataImg"),
+		$AlertBox:$(".ZCC-alertBox"),
+		$BottomButton:$("#ZCC-buttonBox"),
+		$ErrorContent:$("#ZCC-ErrorContent"),
+	});
+</script>

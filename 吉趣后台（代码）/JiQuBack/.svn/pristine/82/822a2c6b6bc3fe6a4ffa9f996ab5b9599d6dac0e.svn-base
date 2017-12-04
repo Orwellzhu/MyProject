@@ -1,0 +1,81 @@
+	<style type="text/css">
+		.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+		.ZCC-picbox{width: 250px;height: 250px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+		.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+		#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+		.ZCC-margint-10{margin-top: 10px}
+		.ZCC-marginb-10{margin-bottom: 10px}
+
+	</style>
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li>用户管理</li>
+			  <li><a href="#accountManage">账户管理</a></li>
+			  <li>账户编辑</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid" >
+			<div class="ZCC-infobox">
+				<div class="ZCC-picbox">
+					<img src="" id="ZCC-HeadImg">
+				</div>
+				<button type="button" class="btn btn-default ZCC-marginb-10">&nbsp&nbsp&nbsp&nbsp重新上传&nbsp&nbsp&nbsp&nbsp</button>
+				<div id="ZCC-inputbox">
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >姓名</span>
+					  <input type="text" class="form-control" placeholder="Username" id="ZCC-name">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >账户</span>
+					  <input type="text" class="form-control" placeholder="Account" id="ZCC-account">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >密码</span>
+					  <input type="text" class="form-control" placeholder="Password" id="ZCC-password">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >昵称</span>
+					  <input type="text" class="form-control" placeholder="Nickname" id="ZCC-nickname">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >权限</span>
+					  <select class="form-control"	id="ZCC-power">
+						  <option>普通用户</option>
+						  <option>学生会</option>
+						  <option>团委管理员</option>
+						  <option>吉趣管理员</option>
+						</select>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >电话</span>
+					  <input type="text" class="form-control" placeholder="Phone" id="ZCC-phone">
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >扣扣</span>
+					  <input type="text" class="form-control" placeholder="QQ" id="ZCC-qq">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid" >
+			<div style="width: 300px;margin: 0 auto;overflow: hidden;" id="ZCC-ButtonBox">
+				<button type="button" class="btn btn-danger" style="float: left;">&nbsp&nbsp&nbsp&nbsp放弃编辑&nbsp&nbsp&nbsp&nbsp</button>
+				<button type="button" class="btn btn-primary" style="float: right;">&nbsp&nbsp&nbsp&nbsp保存编辑&nbsp&nbsp&nbsp&nbsp</button>
+			</div>
+		</div>
+	</div>
+	<script src="components/userManage/accountManage/edit.js"></script>
+	<script type="text/javascript">
+		new ZCC.component.accountManage_Edit({
+			$inputBox:$("#ZCC-inputbox"),
+			$headImgBox:$("#ZCC-HeadImg"),
+			$buttonBox:$("#ZCC-ButtonBox"),
+		});
+	</script>

@@ -1,0 +1,68 @@
+LGQ.component.activityManage_examineactivity=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	};
+	obj.prototype={
+		constructor:obj,
+		//基础属性
+		dataId:"",//页面传来的参数
+		init:function(option){
+			console.log(option);
+			this.$TableContentWrapper=option.$TableContentWrapper;
+            this.getId();
+            this.requestData();
+		},
+		//获取id
+		getId:function(){
+			var dataId=window.location.href.split('?id=')[1];
+			this.dataId=dataId;
+		},
+		//根据id查询信息
+		requestData:function(){
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Activities",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			  "data":{
+				  "filter": {
+				    "fields": ["Name","Organizer","Time","Place","Detail","id",,"PicUrl"],
+				    "where": { "id": _this.dataId}
+				  }
+			   }
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  _this.strDOM(data[0]);
+			}).fail(function (header, status, errorThrown) {
+			});
+		},
+		//DOM操作
+	strDOM:function(ret){
+		var Name=ret.Name;
+		var Organizer=ret.Organizer;
+		var Time=ret.Time;
+		var Place=ret.Place;
+		var Detail=ret.Detail;
+		var $inputgroup=this.$TableContentWrapper.children(".input-group ");
+		$inputgroup.children("#LGQ-HeadImg").attr("src",ret.PicUrl);
+		$inputgroup.children("#LGQ-name").val(Name);
+		$inputgroup.children("#LGQ-organizer").val(Organizer);
+		$inputgroup.children("#LGQ-place").val(Place);
+		$inputgroup.children("#LGQ-time").val(Time);
+		$inputgroup.children("#LGQ-inputbox-body").val(Detail);
+		this.loaded();
+	},
+    // 加载中
+	loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+	loaded:function(){
+			layer.close(this.layerIndex);
+		},  
+	}
+	return obj;
+})(jQuery,this)

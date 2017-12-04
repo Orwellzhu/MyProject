@@ -1,0 +1,14 @@
+ZCC.component.activityPublic_NewActivity=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	};
+
+	obj.prototype={
+		constructor:obj,
+		init:function(option){
+
+		},
+	};
+
+	return obj;
+})(jQuery,this)

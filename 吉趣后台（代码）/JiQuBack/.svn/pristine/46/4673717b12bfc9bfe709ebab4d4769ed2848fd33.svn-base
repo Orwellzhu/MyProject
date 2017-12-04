@@ -1,0 +1,222 @@
+<!-- <style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-header{height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;}
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding:0 20px;overflow-x:hidden;overflow-y:scroll;background: #fdfdfd}
+	#imgbox{
+		padding-top: 10px;
+	}
+	#imgbox>div{
+            width: 49%;
+            height: 250px;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    #imgbox>div:nth-child(odd) {
+            float: left;
+        }
+
+    #imgbox>div:nth-child(even) {
+            float: right;
+        }
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>论坛管理</li>
+		  <li>帖子详情</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+			<div id="ZCC-inputbox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >帖子标题</span>
+				  <input type="text" class="form-control" placeholder="请输入通知标题" id="ZCC-title" readonly="readonly">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >发布日期</span>
+				  <input type="text" class="form-control" placeholder="格式 2017-11-06 16：04" id="ZCC-date" readonly="readonly">
+				</div>
+			</div>
+
+			<div id="ZCC-editBox">
+				<div id="ZCC-editBox-header">内容</div>
+				<div id="ZCC-editBox-body">
+					<div class="ZCC-content">
+						
+					</div>
+					<div id="imgbox">
+						<div class = "pic" style="background-image:url('');"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="components/infoManage/formManage/checkforum.js"></script>
+<script type="text/javascript">
+	new KJT.component.formManage_Check({
+		$title:$("#ZCC-title"),
+		$date:$("#ZCC-date"),
+		$content:$(".ZCC-content"),
+		$imgbox:$("#imgbox"),
+
+	});
+</script> -->
+<style type="text/css">
+	.KJT_content{
+		float: left;
+		width: 46%;
+		border: 1px solid #ccc;
+		margin: 10px 0 15px 40px;
+		height: 740px;
+		border-radius: 6px;
+	}
+	.KJT_comment{
+		float: right;
+		width: 46%;
+		border: 1px solid #ccc;
+		margin: 10px 40px 15px 0;
+		height: 740px;
+		border-radius: 6px;
+	}
+	.KJT_header{
+		background: #EEEEEE;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		border-radius: 6px 6px 0 0;
+
+	}
+	.KJT_body{
+		height: 701px;
+		border-radius: 0 0 4px 4px;
+		padding:12px 16px 15px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		background: #fdfdfd;
+	}
+	#imgbox{
+		padding: 0 18px;
+		height: auto;
+
+	}
+	#imgbox>div{
+            width: 49%;
+            height: 250px;
+            margin-top: 10px;
+            overflow: hidden;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    #imgbox>div:nth-child(odd) {
+            float: left;
+        }
+
+    #imgbox>div:nth-child(even) {
+            float: right;
+        }
+    .KJT_head{
+    	height: 82px;
+    	padding: 10px 18px 0;
+    	overflow: hidden;
+    }
+    .KJT_headL{
+    	width: 75%;
+    	float: left;
+    }
+    .KJT_headR{
+    	float: right;
+    }
+    .headimg{
+    	width: 60px;
+    	height: 60px;
+    	float: left;
+    	border-radius: 30px;
+    }
+    .name_date{
+    	width: 150px;
+    	height: 60px;
+    	margin-left: 25px;
+    	float: left;
+    	padding: 2px 0;
+    }
+    .name{
+    	font-size: 20px;
+    }
+    .date{
+    	font-size: 14px;
+    	margin-top: 8px;
+    }
+    .KJT_report{
+    	padding: 4px;
+    }
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>论坛管理</li>
+		  <li>帖子详情</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="container-fluid">
+		<div class="KJT_content">
+			<div class="KJT_header">内容</div>
+			<div class="KJT_body">
+				<div class="KJT_head">
+					<div class="KJT_headL">
+						<img class="headimg" >
+						<div class="name_date">
+							<div class="name"></div>
+							<div class="date"></div>
+						</div>
+					</div>
+					<div class="KJT_headR">
+						<button type="button" class="btn btn-default KJT_report"></button>
+					</div>
+				</div>
+				<div class="ZCC-content">
+						
+				</div>
+				<div id="imgbox">
+					<!-- <div class = "pic" style="background-image:url('');"></div> -->
+				</div>
+			</div>
+		</div>
+		<div class="KJT_comment">
+			<div class="KJT_header">评论</div>
+			<div class="KJT_body"></div>
+		</div>
+	</div>
+</div>
+<script src="components/infoManage/formManage/checkforum.js"></script>
+<script type="text/javascript">
+	new KJT.component.formManage_Check({
+		$content:$(".ZCC-content"),
+		$imgbox:$("#imgbox"),
+		$headimg:$(".headimg"),
+		$name:$(".name"),
+		$date:$(".date"),
+		$KJT_report:$(".KJT_report"),
+	});
+</script> -->

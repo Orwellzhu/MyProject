@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#">关于我们</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div style="float:left;width:49%">
+			<div  style="clear:both" id="customized-buttonpane" class="ZCC-editor ZCC-content"></div>
+		</div>
+		
+		<div style="float:right;width:49%;">
+		    <section style="height:auto;width:100%;background:#f9f9f9;border:1px solid #ddd;width:100%;margin:17px auto;">
+		        <div style="height:auto;width:375px;background:#fefefe;margin:0 auto;">
+		            <div style="height:auto;padding:0.5rem 1rem;" class="ZCC-content" id="ZCC-nContent"></div>
+		        </div>
+		    </section>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" style="width: 100%;">
+		<div style="width: 200px;margin: 0 auto;overflow: hidden;">
+			<button type="button" class="btn btn-danger" style="float: left;">&nbsp&nbsp&nbsp&nbsp还原&nbsp&nbsp&nbsp&nbsp</button>
+			<button type="button" class="btn btn-primary" style="float: right;">&nbsp&nbsp&nbsp&nbsp更新&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+</div>
+		<!-- 编辑器 -->
+<script src="components/JiQuEditor/assets/jquery.min.js"></script>
+<script src="components/JiQuEditor/assets/trumbowyg.js"></script>
+<script src="components/JiQuEditor/assets/plugins/base64/trumbowyg.base64.js"></script>	
+<script src="components/proManage/ourpageManage/index.js"></script>
+<script type="text/javascript">
+	new ZCC.component.ourpageManage({
+		$Edit:$(".ZCC-editor"),
+		$Content:$("#ZCC-nContent"),
+	});
+</script>

@@ -1,0 +1,89 @@
+ZCC.component.accountManage_Edit=(function($,window,undefined){
+	//1.构造函数
+	var obj = function(option){
+		this.loading();	
+		this.init(option);		
+	}						
+	//2.方法
+	obj.prototype={
+		constructor:obj,
+		//基础属性
+		dataId:"",//页面传来的参数
+		//初始化
+		init:function(option){
+			console.log(option);
+			this.$inputBox=option.$inputBox;
+			this.$headImgBox=option.$headImgBox;
+			this.getId();
+			this.requestData();
+		},
+		//获取id
+		getId:function(){
+			var dataId=window.location.href.split('?id=')[1];
+			this.dataId=dataId;
+		},
+		//根据id查询信息
+		requestData:function(){
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/MyUser",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			  "data":{
+				  "filter": {
+				    "fields": ["Name","Nickname","Password","HeadImgUrl","AccountNumber","QQ","Phone","id","Role"],
+				    "where": { "_id": _this.dataId}
+				  }
+			   }
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  _this.strDOM(data[0]);
+			}).fail(function (header, status, errorThrown) {
+			});
+		},
+		//DOM操作
+		strDOM:function(ret){
+			var Name=ret.Name;
+			var AccountNumber=ret.AccountNumber;
+			var Password=ret.Password;
+			var Nickname=ret.Nickname;
+			var Role=ret.Role;
+			var Phone=ret.Phone;
+			var QQ=ret.QQ;
+			var id=ret.id;
+			var $inputgroup=this.$inputBox.children(".input-group ")
+			$inputgroup.children("#ZCC-name").val(Name);
+			$inputgroup.children("#ZCC-account").val(AccountNumber);
+			$inputgroup.children("#ZCC-password").val(Password);
+			$inputgroup.children("#ZCC-nickname").val(Nickname);
+			$inputgroup.children("#ZCC-phone").val(Phone);
+			$inputgroup.children("#ZCC-qq").val(QQ);
+			var HeadImgUrl=ret.HeadImgUrl;
+			this.$headImgBox.attr('src',HeadImgUrl); 
+			// selected="selected"
+			if(Role!=undefined){
+				console.log("Role"+Role);
+				var $option=$inputgroup.children("#ZCC-power").children();
+				for(var j=0;j<$option.length;j++){
+					if($option[j].label==Role){
+						$($option[j]).attr("selected","selected");
+						break;
+					}
+				}
+			}
+			this.loaded();
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		}
+	}
+	return obj;	
+})(jQuery,this)	

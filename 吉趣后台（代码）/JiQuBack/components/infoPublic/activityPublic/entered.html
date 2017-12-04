@@ -1,0 +1,60 @@
+<style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-infobox-sm{width: 95%;}
+	.ZCC-infobox-sm:hover{background: #fdfdfd;border-color: #66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-entered-imgBox{height:auto;width: 20%;float: left;padding: 20px;padding-left: 0;padding-top: 0;}
+	.ZCC-entered-infoBox{float: right;width: 80%;padding-right: 20px;}
+	.input-group>div{text-align: left;padding-left: 20px}
+
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息发布</li>
+		  <li><a href="#activityPublic">我的活动</a></li>
+		  <li>查看报名人</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" id="ZCC-contentwrapper">
+		<div style="width: 50%;float: left;">
+			<!-- <div class="ZCC-infobox ZCC-infobox-sm  ZCC-margint-10">
+				<div class="ZCC-entered-imgBox">
+					<img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/bc144da1beeac127cc9cecc57285b49c.jpg">
+				</div>
+				<div  class="ZCC-entered-infoBox">
+					<div class="input-group">
+					  <span class="input-group-addon" >姓名</span>
+					  <div class="form-control"></div>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >账号</span>
+					  <div class="form-control"></div>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >扣扣</span>
+					  <div class="form-control"></div>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >电话</span>
+					  <div class="form-control"></div>
+					</div>
+					<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >邮箱</span>
+					  <div class="form-control"></div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</div>
+
+<script src="components/infoPublic/activityPublic/entered.js"></script>
+<script type="text/javascript">
+	new ZCC.component.activityPublic_Entered({
+		$ContentWrapper:$("#ZCC-contentwrapper"),
+	})
+</script>

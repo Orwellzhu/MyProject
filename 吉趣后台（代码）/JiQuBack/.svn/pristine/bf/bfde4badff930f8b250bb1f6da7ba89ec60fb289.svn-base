@@ -1,0 +1,92 @@
+(function(window, undefined){
+	// 定义项目环境
+	var env = (function(env){
+		if (env == 'development'){ // 当前是开发环境
+			
+			return 'development';
+		} else {
+			console.log = console.error = console.warn = function(){};
+			
+			return 'production';
+		}
+	})('development'); // production
+	
+	// 分配命名空间
+	var namespace = function(name, phone){
+		var Obj = Obj || {};
+		
+		Obj.component = {};
+		Obj.util = {};
+		Obj.server = {};
+		Obj.env =  env;
+		Obj.developer = {
+			name: name,
+			tel: phone
+		};
+		
+		return Obj;
+	};
+	
+	window.JZY = namespace('JZY', '110');
+	window.ZCC = namespace('朱陈超', '15601779516');
+	window.LBJ = namespace('李波键', '15601779516');
+	window.LGQ = namespace('刘高强', '15601779516');
+	window.KJT = namespace('康锦韬', '15601779516');
+	
+	
+	// API 接口地址的集合
+	window.templateUrl = {
+		/*信息发布*/
+		activityPublic: 'components/infoPublic/activityPublic/index.html',
+		activityPublic_Check: 'components/infoPublic/activityPublic/check.html',
+		activityPublic_Newactivities:'components/infoPublic/activityPublic/newactivities.html',
+		activityPublic_Revise:'components/infoPublic/activityPublic/revise.html',
+		activityPublic_Entered:'components/infoPublic/activityPublic/entered.html',
+		articlePublic: 'components/infoPublic/articlePublic/index.html',
+		articlePublic_Check: 'components/infoPublic/articlePublic/check.html',
+		articlePublic_Revise: 'components/infoPublic/articlePublic/revise.html',
+		articlePublic_Newarticle: 'components/infoPublic/articlePublic/newarticle.html',
+		messagePublic:'components/infoPublic/messagePublic/index.html',
+		/*信息管理*/
+		activityManage: 'components/infoManage/activityManage/index.html',
+		activityManage_Examine:'components/infoManage/activityManage/examineactivity.html',
+		activityManage_Check:'components/infoManage/activityManage/checkactivity.html',
+		articleManage: 'components/infoManage/articleManage/index.html',
+		articleManage_Check:'components/infoManage/articleManage/checkarticle.html',	
+		formManage: 'components/infoManage/formManage/index.html',
+		formManage_Checkforum: 'components/infoManage/formManage/checkforum.html',
+		messageManage: 'components/infoManage/messageManage/index.html',
+		messageManage_Check:'components/infoManage/messageManage/check.html',
+		/*签到查看*/
+		signCheck:'components/signCheck/index.html',
+		signCheck_Checkpeople:'components/signCheck/checkpeople.html',
+		/*产品管理*/
+		bannerManage: 'components/proManage/bannerManage/index.html',
+		bannerManage_Edit: 'components/proManage/bannerManage/edit.html',
+		bannerManage_Revise: 'components/proManage/bannerManage/revise.html',
+		ourpageManage: 'components/proManage/ourpageManage/index.html',
+		/*用户管理*/
+		accountManage: 'components/userManage/accountManage/index.html',
+		accountManage_Edit: 'components/userManage/accountManage/edit.html',
+		accountManage_Create: 'components/userManage/accountManage/create.html',
+		accountManage_Check: 'components/userManage/accountManage/check.html',
+		userReport: 'components/userManage/userReport/index.html',
+		/*焦老师*/
+		infoTemplate: 'components/infomation/info.template.html',
+		addarcTemplate: 'components/article/add/add.template.html',
+		editarcTemplate: 'components/article/edit/edit.template.html',
+		modarcTemplate: 'components/article/mod/mod.template.html',
+	};
+
+	var time = new Date().getTime();
+	// var header = {
+	// 	"X-APICloud-AppId": "A6055746814517",
+	// 	"X-APICloud-AppKey": sha1('A6055746814517'+'UZ'+'E7C7E49E-9D14-AD52-5F9E-1D34C4F1937D'+'UZ'+time)+'.'+time
+	// };
+	var header = {
+		"X-APICloud-AppId": "A6054180820010",
+		"X-APICloud-AppKey": sha1('A6054180820010'+'UZ'+'4B15D163-0E4D-9D55-854A-3CD7DC24E5B6'+'UZ'+time)+'.'+time
+	};
+	window.apiHeader=header;
+	window._UserId="59758dbe960c82b077d76827";
+})(window);

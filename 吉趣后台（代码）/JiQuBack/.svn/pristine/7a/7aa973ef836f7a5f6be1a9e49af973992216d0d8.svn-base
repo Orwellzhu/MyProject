@@ -1,0 +1,197 @@
+<style type="text/css">
+	.ZCC-picbox{height: 100%;width:100%;background:url("components/proManage/bannerManage/image/add.png") no-repeat #fff;background-position:center;cursor:pointer}
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a>产品管理</a></li>
+		  <li><a href="#bannerManage">轮播图管理</a></li>
+		  <li><a >轮播图修改</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row" style="padding-top: 20px">
+	<div style="overflow: hidden;width: 450px;height: auto;margin: 0 auto;" >
+		  <a  class="thumbnail" style="margin:0;height: 250px">
+		  	<div class="ZCC-picbox"></div>
+		  </a>
+	</div>
+</div>
+
+<div class="row" style="padding-top: 20px">
+	<div style="overflow: hidden;width: 60%;height: auto;margin: 0 auto;" >
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1" > Title </span>
+		  <input type="text" class="form-control" placeholder="Pleace input banner's title" aria-describedby="basic-addon1">
+		</div>
+	</div>
+</div>
+
+
+<div class="row" style="padding-top: 20px">
+	<div style="overflow: hidden;width: 60%;height: auto;margin: 0 auto;">
+		<div style="width: 49%;float: left;border: 1px solid #cccccc;border-radius:4px;">
+			<div style="height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;">HTML</div>
+			<div style="height: 600px;border-radius: 0 0 4px 4px;overflow-x:hidden;overflow-y:scroll"></div>
+		</div>
+		<div style="width: 49%;float: right;border: 1px solid #cccccc;border-radius:4px;">
+		  <div style="height: 35px;background-color: #EEEEEE;text-align: center;line-height: 35px;">预览</div>
+		  <div style="height: 600px;overflow-x:hidden;overflow-y:scroll;background:url('http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/7767e147196169e5231b86cacb9387ff.png') no-repeat #fff;background-position:center;background-size:100% 100%;" class="ZCC-content">
+		  	<style>
+  body{background:none}
+  .title{
+    height: 2.2rem;
+    width: 100%;
+    text-align: center;
+    line-height: 2.2rem;
+    color: #282828;
+    font-size: 0.9rem
+  }
+  .article{
+    width: 100%;
+    line-height: 1.25rem;
+    color: #5E5E5E;
+    font-size: 0.8rem;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .bar{
+    width: 100%;
+  
+    position: relative;
+   
+    overflow: hidden;
+    padding-bottom: 2rem;
+  }
+  .peobar{
+    float: left;
+    width: 33.333%;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    color: #5E5E5E;
+    font-size: 0.7rem;
+  }
+  .peobar span{
+  display: block;
+
+  }
+  .headImg{
+  width:75%;
+  height:auto;
+  margin:0 auto;
+  border-radius: 100%;
+  }
+  .three{
+  height:5rem;
+  width:100%;
+  }
+  .banben{
+  float:right;
+  font-size:0.6rem;
+  color:#989898;
+  }
+</style>
+  <div style="width:100%;height:auto;padding:0 1rem;margin-top:3rem;margin-bottom:3rem;" >
+    <div style="background:#ffffff;width:100%;height:auto;background-color:rgba(255,255,255,0.85);padding:1rem 1rem;border-radius:5px">
+      <div class="title" >吉趣简介</div>
+      <div class="article">
+        [吉趣]是由创趣PTP社团组织开发并维护的一款产品。<br><br>
+
+        致力于通过移动应用平台，为学生会、团委、学生活动、生活等方面提供方便。<br><br>
+
+        [吉趣]目前着重于解决新生入学时的困难，帮助17级同学在入学前与入学后快速融入大学生活中来。<br><br>
+
+       
+      </div>
+      <div class="title" >吉趣开发&运营团队</div>
+      <div class="bar">
+      <div class="three">
+            <div class="peobar">
+              <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/3d587d2a20a4101a2f62a708775f497a.png" class="headImg">
+              <span>魏泽毅</span>
+            </div>
+            <div class="peobar">
+              <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/a9725696a7b329858a57c67cfc80a523.png" class="headImg">
+              <span>朱陈超</span>
+            </div>
+            <div class="peobar">
+              <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/1dd18b4205e3c15b549f54d8ef1ff67b.jpg" class="headImg">
+              <span>王俊博</span>
+            </div>
+      </div>
+
+      <div class="three">
+          <div class="peobar">
+            <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/61dc248b38b6ca5fb4f3271bfaca5db1.png" class="headImg">
+            <span>王禹丹</span>
+          </div>
+          <div class="peobar">
+            <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/7cc8a15176660afe003ab0e8390617f9.png" class="headImg">
+            <span>廖逸飞</span>
+          </div>
+          <div class="peobar">
+            <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/9c82f258e8c38f2c29ea32aac8ac0eca.png" class="headImg">
+            <span>杨硌</span>
+          </div>
+        </div>
+        <div class="three">
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/23f92347b455ca7916c7babf68ec47c8.png" class="headImg">
+          <span>郭年丰</span>
+        </div>
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/8c9ecb3c9a0446c2ac955f3e95a1f1b1.png" class="headImg">
+          <span>罗豪</span>
+        </div>
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/1a909e4ed3002f537e2703df6ca7c4e3.png" class="headImg">
+          <span>万家兵</span>
+        </div>
+        </div>
+
+        <div class="three">
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/978b886a4a95cea7d74e19b2a6fe5ce1.png" class="headImg">
+          <span>张浩哲</span>
+        </div>
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/af44c3547ef5b2104380f62a3638ecee.png" class="headImg">
+          <span>袁琳</span>
+        </div>
+       
+        </div>
+        <img src="../image/logo1.png"  style="height:2.2rem;width:auto;position:absolute;right:0;bottom:0;">
+      </div>
+      <div class="title" >吉趣1.0特别鸣谢</div>
+      <div class="bar">
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/1c30b436295d79774a2e5e1af6a901e2.png" class="headImg">
+          <span>胡大帅哥</span>
+        </div>
+        <div class="peobar">
+          <img src="http://7yvx8a.com1.z0.glb.clouddn.com/apicloud/440e13521ac29d845c304a619f5a7c9f.png" class="headImg">
+          <span>无心</span>
+        </div>
+
+        <img src="../image/logo2.png"  style="height:2.2rem;width:auto;position:absolute;right:0.5rem;bottom:0.5rem;">
+      </div>
+
+      <div class="title" >联系我们&加入我们</div>
+      <div class="article">
+        [官方QQ群]：592981692 <br>
+        [官方邮箱]：jlu_jiqu@163.com
+
+      </div>
+
+      <div class="banben">最新版本号：2.0.0</div>
+    </div>
+
+  </div>
+
+
+
+		  </div>
+		</div>
+	</div>
+</div>

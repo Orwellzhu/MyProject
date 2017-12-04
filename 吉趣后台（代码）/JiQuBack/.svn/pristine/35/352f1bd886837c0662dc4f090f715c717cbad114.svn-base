@@ -1,0 +1,137 @@
+LGQ.component.articleManage=(function($,window,undefined){
+	//构造函数
+	var obj=function(option){
+		this.loading();
+		this.init(option);
+	};
+	//属性
+	obj.prototype={
+		constructor:obj,
+		//基本属性
+		numbSkip:0,
+		numbLimit:10,
+		//方法
+		init:function(option){
+			this.loading();			
+			this.$TableContentWrapper=option.$TableContentWrapper;
+			this.$PagerWrapper=option.$PagerWrapper;
+			this.requestData();
+			this.requestNumb();
+		},
+		//页面初始化
+		initPager:function(numb){
+			var _this=this;
+			ZCC.component.Page({
+				num:numb,				//页码数
+				startnum:1,				//指定页码
+				elem:_this.$PagerWrapper,
+				callback:function(n){	//回调函数
+					_this.numbSkip=(n-1)*_this.numbLimit;
+					_this.requestData();
+				}
+			});
+		},
+		//请求数据条数
+		requestNumb:function(){
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Article/count",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET"
+			}).success(function (data, status, header) {
+				var numb=Math.ceil((data.count)/_this.numbLimit);
+				_this.initPager(numb);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			})
+		},
+		//请求数据
+		requestData:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Article",     
+			  "cache":false,
+			  "headers": apiHeader,
+			  "data":{
+			  		"filter": {
+					    "skip": _this.numbSkip,
+				    	"limit": _this.numbLimit,
+				    	"include": "AuthorPointer",
+				    	"fields":["Title","Status", "Read","Date","Time","Author"],
+				    	"includefilter": {
+                    		"MyUser": {"filter": [ "Nickname", "id"]},
+               			},
+					},
+				},
+			  "type":"GET"
+			}).success(function (data, status, header) {
+			  console.log(data);
+			  _this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+			});
+		},
+		//字符串拼接
+		strLine:function(ret,i){
+			var strArray=[];
+			var state=ret.Status;
+			var status="";
+			var button="";
+			if(state==0){
+				status='<button type="button" class="btn btn-info btn-xs">不通过</button> ';
+				button='<a href="#articleManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button></a> '
+				+'<button type="button" class="btn btn-danger btn-sm">删除</button> ';
+			}else if(state==1){
+				status='<button type="button" class="btn btn-success btn-xs">等待审核</button> ';
+				button='<a href="#articleManage_Examine?id='+ret.id+'"><button type="button" class="btn btn-primary btn-sm">编辑</button> </a>'
+				+'<a href="#articleManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button> </a>'
+				+'<button type="button" class="btn btn-danger btn-sm">删除</button> ';
+			}
+			else if(state==2){
+				status='<button type="button" class="btn btn-warning btn-xs">审核通过</button> ';
+				button='<a href="#articleManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button> </a>'
+				+'<button type="button" class="btn btn-danger btn-sm">删除</button> ';
+			}
+			else if(state==4){
+				status='<button type="button" class="btn btn-danger btn-xs">不显示</button> ';
+				button='<a href="#articleManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button> </a>'
+				+'<button type="button" class="btn btn-danger btn-sm">删除</button> ';
+			}
+			strArray=['<tr>'
+		                ,'<th>'+i+'</th>'
+		                ,'<th>'+ret.Title+'</th>'
+		                ,'<th>'+ret.Author.Name+'</th>'
+		                ,'<th>'+status+'</th>'
+		                ,'<th>'+ret.Read+'</th>'
+		                ,'<th>'+ret.Date+" "+ret.Time+'</th>'
+		                ,'<th>'			                	
+		                	,button
+		                ,'</th>'
+		            ,'</tr>'];
+		    return strArray.join("");
+		},
+		//DOM操作
+		strDOM:function(retArray){
+			var str="";
+			for(var i=0;i<retArray.length;i++){
+				str+=this.strLine(retArray[i],i+1);
+			}
+			this.$TableContentWrapper.html(str);
+			this.loaded();
+			return true;
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		},
+	}
+
+	return obj;
+})(jQuery,this)

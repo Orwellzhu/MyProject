@@ -1,0 +1,123 @@
+ZCC.component.accountManage=(function($,window,undefined){
+	//1.构造函数
+	var obj = function(option){	
+		this.loading();	
+		this.init(option);		
+	}						
+	//2.方法
+	obj.prototype={
+		constructor:obj,
+		//基本属性
+		numbSkip:0,
+		numbLimit:15,		
+		init:function(option){
+			this.$TableContentWrapper=option.$TableContentWrapper;
+			this.$Pager=option.$Pager;
+			this.requestCount();//请求数据条数
+			this.requestData();//请求表格数据
+			
+		},
+		//初始化页面条
+		initPager:function(numb){
+			var _this=this;
+			ZCC.component.Page({
+					num:numb,				//页码数
+					startnum:1,				//指定页码
+					elem:_this.$Pager,
+					callback:function(n){	//回调函数
+						console.log(n);
+						_this.numbSkip=_this.numbLimit*(n-1)
+						_this.requestData();
+					}
+			});
+		},
+		//请求数据条数
+		requestCount:function(){
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/MyUser/count",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  var page=Math.ceil(data.count/_this.numbLimit);
+			  console.log("page:"+page);
+			  _this.initPager(page);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			});
+			
+		},
+		//请求表格数据
+		requestData:function(skipNumb){
+			this.loading();
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/MyUser",
+				"data":{
+			  		"filter": {
+					    "skip": _this.numbSkip,
+				    	"limit": _this.numbLimit,
+				    	"fields": ["Name","Nickname","Password","HeadImgUrl","AccountNumber","Phone","id","Role"],
+				    	"order": "AccountNumber DESC",
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				console.log(JSON.stringify(data));
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			});
+		},
+		//DOM操作
+		strDOM:function(retArray){
+			var str="";
+			for(var i=0;i<retArray.length;i++){
+				str+=this.strLink(retArray[i],i+1);
+			}
+			this.$TableContentWrapper.html(str);
+			this.loaded();	
+			return true;
+		},
+		//字符串拼接
+		strLink:function(ret,id){
+			var strBox=new Array();
+			var phonestr;
+			console.log(ret.Phone);
+			if(ret.Phone==undefined){phonestr=""}else{
+				phonestr=ret.Phone;
+			}
+			strBox=['<tr>'
+		                ,'<th>'+id+'</th>'
+		                ,'<th>'+ret.AccountNumber+'</th>'
+		                ,'<th>'+ret.Name+'</th>'
+		                ,'<th>'+ret.Password+'</th>'
+		                ,'<th>'+ret.Nickname+'</th>'
+		                ,'<th>'+phonestr+'</th>'
+		                ,'<th>管理员</th>'
+		                ,'<th>'
+		                	,'<a href="#accountManage_Check?id='+ret.id+'"><button type="button" class="btn btn-default btn-sm">查看</button></a> '
+		                	,'<a href="#accountManage_Edit?id='+ret.id+'"><button type="button" class="btn btn-primary btn-sm">编辑</button></a> '
+		                	,'<button type="button" class="btn btn-danger btn-sm">删除</button> '
+		                ,'</th>'
+		            ,'</tr>'];
+			return strBox.join('');
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		}
+	}
+
+	return obj;	
+})(jQuery,this)	

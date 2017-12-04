@@ -1,0 +1,25 @@
+ZCC.component.messagePublic=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	};
+
+	obj.prototype={
+		constructor:obj,
+		init:function(option){
+			this.$dateBox=option.$dateBox;
+			this.bindDateSelect();
+		},
+		bindDateSelect:function(){
+			var _this=this;
+			layui.use('laydate', function(){
+			  var laydate = layui.laydate;
+			  //执行一个laydate实例
+			  laydate.render({
+			    elem: _this.$dateBox.selector, //指定元素
+			    type: 'datetime'
+			  });
+			});
+		},
+	}
+	return obj;
+})(jQuery,this)

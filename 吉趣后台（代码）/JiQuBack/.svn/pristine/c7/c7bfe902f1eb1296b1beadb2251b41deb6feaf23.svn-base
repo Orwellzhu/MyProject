@@ -1,0 +1,155 @@
+<style type="text/css">
+	.KJT-blank{
+		margin-left: 15px;
+	}
+	.KJT-mt-20{
+		margin-top: 20px;
+	}
+	.KJT-rt{
+		float: right;
+	}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li><a href="#">签到查看</a></li>
+		  
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-lg-3 col-lg-offset-9">
+	    <div class="input-group">
+	      <input type="text" class="form-control" placeholder="Search for...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">搜索</button>
+	      </span>
+	    </div>
+	</div>
+</div>
+
+<div class="row KJT-mt-20">
+	<div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <tbody>
+            	<tr class="active">
+            		<th width="3%">序号</th>
+	                <th width="15%">签到主题</th>
+	                <th width="18%">签到简介</th>
+	                <th width="12%">签到发起方</th>
+	                <th width="14%">时间</th>
+	                <th width="8%">地点</th>  
+	                <th width="8%">是否结束</th>
+	                <th>操作</th>
+	            </tr>
+            </tbody>
+            <tbody id="arcListView">
+				<!-- <tr>
+				    <th>1</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr>
+            	<tr>
+				    <th>2</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr><tr>
+				    <th>3</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr><tr>
+				    <th>4</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr><tr>
+				    <th>5</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr><tr>
+				    <th>6</th>
+	                <th>2016年级大会</th>
+	                <th>查坐场人数</th>
+	                <th>计算机学院办公室</th>
+	                <th>2017年9月16日 9:40</th>
+	                <th>逸夫楼</th>
+	                <th>已结束</th>
+	                <th>			                	
+	                	<button type="button" class="btn btn-primary btn-sm">查看签到结果</button>
+	                </th>
+            	</tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <nav aria-label="Page navigation">
+	<ul class="pagination">
+		<li>
+			<a href="#" aria-label="Previous">
+			<span aria-hidden="true">«</span>
+			</a>
+		</li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">...</a></li>
+		<li>
+			<a href="#" aria-label="Next">
+			<span aria-hidden="true">»</span>
+			</a>
+		</li>
+	</ul>
+</nav> -->
+<div class="row">
+	<div class="container-fluid">
+		<ul class="pagination" id="ZCC-pager">
+
+	    </ul>
+	</div>
+</div>
+<script src="components/signCheck/index.js"></script>
+<script type="text/javascript">
+	var signCheck=new KJT.component.signCheck({
+		$TableContentWrapper:$("#arcListView"),
+		$Pager:$("#ZCC-pager"),
+	});
+</script>

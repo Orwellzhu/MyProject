@@ -1,0 +1,148 @@
+ZCC.component.articlePublic_NewArticle=(function($,window,undefined){
+	var obj=function(option){
+		this.init(option);
+	};
+
+	obj.prototype={
+		constructor:obj,
+		imgId:"",
+		init:function(option){
+			this.$ArticleTitle=option.$ArticleTitle;
+			this.$ArticleDate=option.$ArticleDate;
+			this.$Editor=option.$Editor;
+			this.$BottomButton=option.$BottomButton;
+			this.$ImgButton=option.$ImgButton;
+			this.$ImgBox=option.$ImgBox;
+			//方法
+			this.bindButtonEvent();
+		},
+		//初始化日期
+		initClender:function(){},
+		//获取输入的标题、日期、编辑器内容
+		getDate:function(){
+
+		},
+		//绑定底部按钮事件
+		bindButtonEvent:function(){
+			//绑定上传按钮
+			this.uploadPic();
+			//绑定日历事件
+			this.bindClender();
+
+		},
+		//绑定上传图片
+		uploadPic:function(){
+			var _this=this;
+			var uploader = WebUploader.create({
+			    // swf文件路径
+			    swf:'components/webuploader/Uploader.swf',
+			    // 文件接收服务端。
+			    server: 'http://d.apicloud.com/mcm/api/file',
+			    // 选择文件的按钮。可选。
+			    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+			    pick: _this.$ImgButton,
+			    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+			    resize: false,
+			    auto: true,
+			    accept: {
+			        title: 'Images',
+			        extensions: 'gif,jpg,jpeg,bmp,png',
+			        mimeTypes: 'image/*'
+			    }
+			});
+			uploader.on("fileQueued", function (file) {
+				_this.loading();
+			    uploader.option('formData', {
+			        filename: file.name,
+			        type: file.type
+			    });
+			    console.log(file);
+		        uploader.makeThumb( file, function( error, src ) {
+			        if ( error ) {
+			        	//上传图片出错
+			            _this.uploadImgFail();
+			            return;
+			        }
+			        _this.$ImgBox.attr('src', src);
+			    },1000,1000);
+			});
+			//文件上传成功
+			uploader.on('uploadSuccess', function (file, res) {
+			    if (res && res.id) {
+			        _this.uploadImgSuccess(res.id);
+			    } else if (res &&res.status == 0) {
+			        _this.uploadImgFail();
+			    } else {
+			        _this.uploadImgFail();
+			    }
+			});
+			//文件上传失败
+			uploader.on('uploadError', function (file, reason) {
+			    alert("失败")
+			});
+			//上传完成，不管成功失败
+			uploader.on('uploadComplete', function (file) {
+			    uploader.removeFile(file);
+			    _this.loaded();
+			});
+			uploader.on('uploadBeforeSend', function (block, data, headers) {
+				var appId="A6056786505575";
+				var appKey="92559A05-497E-5C42-FC7E-91DA5AB3B599";
+				var now = Date.now();
+				var appKey2 = sha1(appId+"UZ"+appKey+"UZ"+now)+"."+now;
+			    headers["X-APICloud-AppKey"] = window.apiHeader['X-APICloud-AppKey'];
+			    headers["X-APICloud-AppId"] = window.apiHeader['X-APICloud-AppId'];
+			});
+			//上传中
+			uploader.on('uploadProgress',function(file,percentage){
+			});
+		},
+		//绑定日历事件
+		bindClender:function(){
+			var _this=this;
+			layui.use('laydate', function(){
+			  var laydate = layui.laydate;
+			  laydate.render({
+			    elem: _this.$ArticleDate.selector, //指定元素
+			    type: 'datetime'
+			  });
+			});
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		},
+		//图片上传失败
+		uploadImgFail:function(){
+			//清楚img标签里面的图片
+			var _this=this;
+			_this.$ImgBox.attr('src', "");
+			//弹出提示框
+			var index=layer.open({
+			  title: '吉趣',
+			  content: '图片上传失败,请重新上传',
+			  btnAlign: 'c',
+			  yes:function(index, layero){
+			  	layer.close(index);	
+			  },
+			  cancel: function(){
+			  	layer.close(index);	
+			  }
+			}); 
+			_this.imgId=""; 
+
+		},
+		//图片上传成功
+		uploadImgSuccess:function(id){
+			this.imgId=id;			
+		},
+
+	}
+	return obj;
+})(jQuery,this)

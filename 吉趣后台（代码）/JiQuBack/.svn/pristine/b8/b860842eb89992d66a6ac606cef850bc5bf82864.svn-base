@@ -1,0 +1,418 @@
+
+KJT.component.formManage=(function($,window,undefined){
+
+	//1.构造函数
+	var obj = function(option){
+		this.loading();
+		this.init(option);
+	}
+	//2.方法
+	obj.prototype={
+		constructor:obj,
+		//基本属性
+		numbSkip:0,
+		numbLimit:10,
+		status:0,
+		//构造函数
+		init:function(option){
+			this.$TableContentWrapper=option.$TableContentWrapper;
+			this.$Pager=option.$Pager;
+			this.$SUOYOU=option.$SUOYOU;
+			this.requestCount();//请求数据条数
+			this.requestData();//请求表格数据
+			this.bindGEvent();//绑定官字按钮的事件
+			this.bindDEvent();//绑定置顶按钮的事件
+			this.bind_SUOYOU_Event();
+			this.bind_GF_Event();
+			this.bind_YH_Event();
+		},
+		//初始化页面条
+		initPager:function(numb){
+			var _this=this;
+			//pager已经在index.html引过直接直接复制就行，参数自己改一下by朱陈超
+			ZCC.component.Page({
+					num:numb,				//页码数
+					startnum:1,				//指定页码
+					elem:this.$Pager,
+					callback:function(n){	//回调函数
+						console.log(n);
+						_this.numbSkip=_this.numbLimit*(n-1);
+						_this.requestData(_this.numbLimit*(n-1));
+					}
+			});
+		},
+		//请求数据条数
+		requestCount:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Forum/count",
+			  "data":{
+			  	"filter":{
+			  		"where":{"Type":1}
+			  	}
+			  },
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  var page=Math.ceil(data.count/(_this.numbLimit));
+			  console.log("page:"+page);
+			  _this.initPager(page);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			});
+			
+		},
+		requestCountGF:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Forum/count",
+			  "data":{
+			  	"filter":{
+			  		"where":{"Type":1,"IfOfficial":"ture"}
+			  	}
+			  },
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  var page=Math.ceil(data.count/(_this.numbLimit));
+			  console.log("page:"+page);
+			  _this.initPager(page);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			});
+			
+		},
+		requestCountYH:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Forum/count",
+			  "data":{
+			  	"filter":{
+			  		"where":{"Type":1,"IfOfficial":"false"}
+			  	}
+			  },
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			}).success(function (data, status, header) {
+			  console.log(JSON.stringify(data));
+			  var page=Math.ceil(data.count/(_this.numbLimit));
+			  console.log("page:"+page);
+			  _this.initPager(page);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			});
+			
+		},
+		//请求表格数据
+		requestData:function(skipNumb){
+			this.loading();
+			if(skipNumb==undefined){skipNumb=this.numbSkip};
+			console.log("skip:"+skipNumb);
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum",
+				"data":{
+			  		"filter": {
+					    "where": {"Type":1},
+					    "skip": skipNumb,
+				    	"limit": _this.numbLimit,
+				    	"fields":["id","Date","Title","Read","Promulgator","IfOfficial","Priority"],
+				    	"include":"PromulgatorPointer",
+				    	"includefilter":{"fields":"Name"}
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				console.log(JSON.stringify(data));
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			  //fail body
+			});
+		},
+		requestDataGF:function(skipNumb){
+			this.loading();
+			if(skipNumb==undefined){skipNumb=this.numbSkip};
+			console.log("skip:"+skipNumb);
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum",
+				"data":{
+			  		"filter": {
+					    "where": {"Type":1,"IfOfficial":"ture"},
+					    "skip": skipNumb,
+				    	"limit": _this.numbLimit,
+				    	"fields":["id","Date","Title","Read","Promulgator","IfOfficial","Priority"],
+				    	"include":"PromulgatorPointer",
+				    	"includefilter":{"fields":"Name"}
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				console.log(JSON.stringify(data));
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			  //fail body
+			});
+		},
+		requestDataYH:function(skipNumb){
+			this.loading();
+			if(skipNumb==undefined){skipNumb=this.numbSkip};
+			console.log("skip:"+skipNumb);
+			var _this=this;
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum",
+				"data":{
+			  		"filter": {
+					    "where": {"Type":1,"IfOfficial":"false"},
+					    "skip": skipNumb,
+				    	"limit": _this.numbLimit,
+				    	"fields":["id","Date","Title","Read","Promulgator","IfOfficial","Priority"],
+				    	"include":"PromulgatorPointer",
+				    	"includefilter":{"fields":"Name"}
+					}
+				},
+				"cache": false,
+				"headers": apiHeader,
+				"type": "GET"
+			}).success(function (data, status, header) {
+				console.log(JSON.stringify(data));
+				_this.strDOM(data);
+			}).fail(function (header, status, errorThrown) {
+				console.log(JSON.stringify(header));
+			  //fail body
+			});
+		},
+		//DOM操作
+		strDOM:function(retArray){
+			var str="";
+			for(var i=0;i<retArray.length;i++){
+				str+=this.strLink(retArray[i],i+1);
+			}
+
+			this.$TableContentWrapper.html(str);
+			this.loaded();
+			return true;
+		},
+		//字符串拼接
+		strLink:function(ret,id){
+			var strBox=new Array();
+			var Read0;
+			var IFO;
+			var PRT;
+			if (ret.Read==undefined) {Read0=0}else{Read0=ret.Read}
+			if(ret.IfOfficial==false){IFO="添加官字"}else{IFO="取消官字"}
+			if(ret.Priority==1){PRT="取消置顶"}else{PRT="添加置顶"}
+			strBox=['<tr>'
+		                ,'<th>'+id+'</th>'
+		                ,'<th>'+ret.Title+'</th>'
+		                ,'<th>'+ret.Promulgator.Name+'</th>'
+		                ,'<th>'+ret.Date+'</th>'
+		                ,'<th>'+Read0+'</th>'
+		                ,'<th>'
+			                ,'<button type="button" class="btn btn-default btn-sm KJTbtn1" data-id="'+ret.id+'">'+IFO+'</button> '
+		                	,'<button type="button" class="btn btn-primary btn-sm KJTbtn2" data-id="'+ret.id+'">'+PRT+'</button> '
+		                	,'<a href="#formManage_Checkforum?id='+ret.id+'"><button type="button" class="btn btn-danger btn-sm">审查</button></a>'
+		                ,'</th>'
+		            ,'</tr>'];
+			return strBox.join('');
+		},
+		//添加官字操作
+		Forum_TG:function(id){
+			var _this=this;
+			_this.loading();
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum/"+id,
+  				"cache": false,
+  				"headers":apiHeader,
+				"data": {
+				    "IfOfficial": "ture",
+				    "_method": "PUT"
+				},
+				"type": "POST"
+			}).success(function (data, status, header) {
+				if (_this.status==0) {_this.requestData();}
+				if (_this.status==1) {_this.requestDataGF(); _this.requestDataGF();}
+				if (_this.status==2) {_this.requestDataYH(); _this.requestDataYH();}
+				_this.loaded();
+  				//success body
+			}).fail(function (header, status, errorThrown) {
+  				//fail body
+			})
+		},
+		//取消官字操作
+		Forum_QG:function(id){
+			var _this=this;
+			_this.loading();
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum/"+id,
+  				"cache": false,
+  				"headers":apiHeader,
+				"data": {
+				    "IfOfficial": "false",
+				    "_method": "PUT"
+				},
+				"type": "POST"
+			}).success(function (data, status, header) {
+				if (_this.status==0) {_this.requestData();}
+				if (_this.status==1) {_this.requestDataGF(); _this.requestDataGF();}
+				if (_this.status==2) {_this.requestDataYH(); _this.requestDataYH();}
+				_this.loaded();
+  				//success body
+			}).fail(function (header, status, errorThrown) {
+  				//fail body
+			})
+		},
+		//添加置顶操作
+		Forum_TD:function(id){
+			var _this=this;
+			_this.loading();
+
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum/"+id,
+  				"cache": false,
+  				"headers":apiHeader,
+				"data": {
+				    "Priority": "1",
+				    "_method": "PUT"
+				},
+				"type": "POST"
+			}).success(function (data, status, header) {
+				if (_this.status==0) {_this.requestData();}
+				if (_this.status==1) {_this.requestDataGF();}
+				if (_this.status==2) {_this.requestDataYH();}
+				_this.loaded();
+  				//success body
+			}).fail(function (header, status, errorThrown) {
+  				//fail body
+			})
+		},
+		//取消置顶操作
+		Forum_QD:function(id){
+			var _this=this;
+			_this.loading();
+			$.ajax({
+				"url": "https://d.apicloud.com/mcm/api/Forum/"+id,
+  				"cache": false,
+  				"headers":apiHeader,
+				"data": {
+				    "Priority": "0",
+				    "_method": "PUT"
+				},
+				"type": "POST"
+			}).success(function (data, status, header) {
+				if (_this.status==0) {_this.requestData();}
+				if (_this.status==1) {_this.requestDataGF();}
+				if (_this.status==2) {_this.requestDataYH();}
+				_this.loaded();
+  				//success body
+			}).fail(function (header, status, errorThrown) {
+  				//fail body
+			})
+		},
+		//绑定官字按钮的事件
+		bindGEvent:function(){
+			var _this=this;//obj指针
+			this.$TableContentWrapper.off('click.kjt').on('click.kjt', 'tr > th > .KJTbtn1', function(ev){
+				ev.stopPropagation();
+				var $this = $(this);//被点击的元素
+				var GUAN=$this.text();
+				if (GUAN=="添加官字") {
+					var isTG = confirm('确认添加官字吗？');
+					if (isTG){
+						_this.Forum_TG($this.attr('data-id'));
+					}
+				}
+				else{
+					var isQG = confirm('确认取消官字吗？');
+					if (isQG){
+						_this.Forum_QG($this.attr('data-id'));
+					}
+				}
+				
+			});
+		},
+		//绑定置顶按钮的事件
+		bindDEvent:function(){
+			var _this=this;//obj指针
+			this.$TableContentWrapper.off('click.kjt0').on('click.kjt0', 'tr > th > .KJTbtn2', function(ev){
+				ev.stopPropagation();
+				var $this = $(this);//被点击的元素
+				var GUAN=$this.text();
+				if (GUAN=="添加置顶") {
+					var isTG = confirm('确认添加置顶吗？');
+					if (isTG){
+						_this.Forum_TD($this.attr('data-id'));
+					}
+				}
+				else{
+					var isQG = confirm('确认取消置顶吗？');
+					if (isQG){
+						_this.Forum_QD($this.attr('data-id'));
+					}
+				}
+				
+			});
+		},
+		
+		bind_SUOYOU_Event:function(){
+			var _this=this;//obj指针
+			this.$SUOYOU.off('click.kjt2').on('click.kjt2', '.col-lg-3 > .btn-group > .KJTbtn4', function(ev){
+				ev.stopPropagation();
+				_this.loading();
+				_this.status=0;
+				_this.requestCount();
+				_this.requestData();
+				_this.loaded();
+			});
+		},
+		bind_GF_Event:function(){
+			var _this=this;//obj指针
+			this.$SUOYOU.off('click.kjt3').on('click.kjt3', '.col-lg-3 > .btn-group > .KJTbtn5', function(ev){
+				var $this = $(this);//被点击的元素
+				ev.stopPropagation();
+				_this.loading();
+				_this.status=1;
+				_this.requestCountGF();
+				_this.requestDataGF();
+				_this.loaded();
+			});
+		},
+		bind_YH_Event:function(){
+			var _this=this;//obj指针
+			this.$SUOYOU.off('click.kjt4').on('click.kjt4', '.col-lg-3 > .btn-group > .KJTbtn6', function(ev){
+				var $this = $(this);//被点击的元素
+				ev.stopPropagation();
+				_this.loading();
+				_this.status=2;
+				_this.requestCountYH();
+				_this.requestDataYH();
+				_this.loaded();
+			});
+		},
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		},
+		
+	}
+	return obj;
+})(jQuery,this)

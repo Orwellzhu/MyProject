@@ -1,0 +1,61 @@
+<style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-header{height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;}
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding:0 100px;overflow-x:hidden;overflow-y:scroll;background: #fdfdfd}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息发布</li>
+		  <li><a href="#articlePublic">文章发布</a></li>
+		  <li>文章查看</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+			<div class="ZCC-picbox">
+				<img src="" id="ZCC-HeadImg">
+			</div>
+			<div id="ZCC-inputbox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >文章标题</span>
+				  <input type="text" class="form-control" placeholder="请输入通知标题" id="ZCC-title" readonly="readonly">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >发布日期</span>
+				  <input type="text" class="form-control" placeholder="格式 2017-11-06 16：04" id="ZCC-date" readonly="readonly">
+				</div>
+			</div>
+
+			<div id="ZCC-editBox">
+				<div id="ZCC-editBox-header">内容</div>
+				<div id="ZCC-editBox-body">
+					<div class="ZCC-content">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="components/infoPublic/articlePublic/check.js"></script>
+<script type="text/javascript">
+	new ZCC.component.articlePublic_Check({
+		$title:$("#ZCC-title"),
+		$date:$("#ZCC-date"),
+		$content:$(".ZCC-content"),
+		$imgbox:$("#ZCC-HeadImg")
+	});
+</script>

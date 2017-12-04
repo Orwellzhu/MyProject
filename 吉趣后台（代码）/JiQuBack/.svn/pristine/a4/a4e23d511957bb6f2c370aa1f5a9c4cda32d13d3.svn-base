@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息发布</li>
+		  <li>活动发布</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row" >
+		<div class="container-fluid" >
+	        <table class="table table-bordered table-hover">
+	            <tbody>
+	            	<tr class="active">
+		                <th width="3%">序号</th>
+		                <th width="20%">活动名称</th>
+		                <th width="10%">发布单位</th>  
+		                <th width="10%">发布时间</th>
+		                <th width="10%">活动时间</th>
+		                <th width="10%">状态</th>
+		                <th width="10%">报名人数</th>
+		                <th >操作</th>
+		            </tr>
+	            </tbody>
+	            <tbody id="arcListView">
+
+					<tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>
+		                	<button type="button" class="btn btn-warning btn-xs">审核中</button>
+		                </th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>
+		                	<button type="button" class="btn btn-success btn-xs">已发布</button>
+		                </th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>
+		                	<button type="button" class="btn btn-danger btn-xs">审核失败</button>
+		                </th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>  
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>
+		                	<button type="button" class="btn btn-default btn-xs">草稿</button>
+		                </th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>   
+	                		<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr>
+
+		            <tr>
+		                <th>1</th>
+		                <th>篮球院赛</th>
+		                <th>体育部</th>
+		                <th>2017-11-03</th>
+		                <th>10天</th>
+		                <th>
+		                	<button type="button" class="btn btn-info btn-xs">不展示</button>
+		                </th>
+		                 <th>10</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>   
+		                </th>
+		            </tr>
+
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+<div class="row">
+	<div class="container-fluid" style="width: 100%;">
+		<div style="width: 250px;margin: 0 auto;overflow: hidden;">
+			<a href="#"><button type="button" class="btn btn-primary" >&nbsp&nbsp&nbsp&nbsp发布新活动&nbsp&nbsp&nbsp&nbsp</button></a>
+		</div>
+	</div>
+</div>
+<script src="components/infoPublic/activityPublic/index.js"></script>
+<script type="text/javascript">
+	new ZCC.component.activityPublic({
+		$TableContentWrapper:$("#arcListView"),
+	});
+</script>

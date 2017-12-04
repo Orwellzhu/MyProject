@@ -1,0 +1,31 @@
+<script type="text/javascript" src="../script/aui-toast.js" ></script>
+toast = new auiToast();//注册
+
+toast.loading({
+    title:"加载中",
+    duration:2000
+},function(ret){
+});
+toast.hide();
+
+
+toast.fail({
+    title:"请求超时",
+    duration:2000
+});
+请求超时
+
+toast.success({
+    title:"提交成功",
+    duration:2000
+});
+
+
+
+toast.custom({
+    title:"提示：XXXX",
+    html:'<i class="aui-iconfont aui-icon-info"></i>',
+    duration:2000
+});
+
+

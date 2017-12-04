@@ -1,0 +1,70 @@
+当修改一个数据后，如何修改已近打开的Frame/Window
+
+1.当需要刷新页面是Window时
+	法一：
+		api.addEventListener({
+		    name:'viewappear'
+			}, function(ret, err){        
+		   //你的函数
+		   init();
+		});
+		该函数写在需要被修改页面的apiready函数中
+		当该页面被显示时，调用该函数
+	
+	法二：
+		step1.在关闭修改数据页面的函数中添加函数：
+		api.execScript({
+				name:'窗口的名字',
+				script: '需要刷新页面内部的函数'
+			});
+		然后再执行 api.closeWind()
+		
+		step2.监听用户点击手机返回键：
+			//添加在当前页面[不能添加在frame页面中]
+			api.addEventListener({
+				name: 'keyback'
+				}, function(ret, err) {
+				//在这里写函数，刷新页面
+				api.execScript({
+					name:'窗口的名字',
+					script: '需要刷新页面 内部的函数'
+				});
+			});
+	法三：
+		打开窗口时，设置参数reload：true
+		在关闭修改数据页面函数中调用openwind函数，重新打开
+		[但是会执行打开动画，所以该条是没有什么鸟用的方法]
+		
+2.当需要刷新页面是frame时
+	在Windows[frame父页面]中添加函数：
+		//监听父页面是否显示
+		api.addEventListener({
+			name: 'keyback'
+			}, function(ret, err) {
+			//当显示时刷新frame  
+			init();
+		});	
+		function init(){
+			api.execScript({
+					frameName:'frame页面',//必须是当前Windows的子frame
+					script: 'frame页面的刷新函数;'
+				});
+		}
+感谢：马老师&&http://community.apicloud.com/bbs/forum.php?mod=viewthread&tid=1935
+
+
+
+api.execScript()用法
+
+比如 你在窗口B想执行窗口A的fun函数 
+api.execScript({
+    name: 'A',
+    script: 'fun();'
+});
+
+还可以在窗口A中的子窗口中执行 
+api.execScript({
+    name: 'A',
+frameName:"Frame1"//子窗口名称
+    script: 'fun();'
+});

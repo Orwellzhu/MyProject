@@ -1,0 +1,115 @@
+ZCC.component.accountManage_Create=(function($,window,undefined){
+	//1.构造函数
+	var obj = function(option){
+		this.init(option);		
+	}						
+	//2.方法
+	obj.prototype={
+		constructor:obj,
+		init:function(option){
+			console.log(option);
+			this.$inputBox=option.$inputBox;
+			this.$headImgBox=option.$headImgBox;
+			this.$buttonBox=option.$buttonBox;
+			this.bindEvent();
+		},
+		bindEvent:function(){
+			var _this=this;
+			//绑定放弃创建按钮
+			_this.$buttonBox.children(".btn-danger").on("click",function(){
+				window.history.back(-1);	//返回上级页面
+			})
+			//绑定确认创建按钮
+			_this.$buttonBox.children(".btn-primary").on("click",function(){
+				_this.gerDOMData();
+			})
+
+		},
+		//获取页面内的数据
+		gerDOMData:function(){
+			var _this=this;
+			var $inputgroup=this.$inputBox.children(".input-group ")
+
+			var Name=$inputgroup.children("#ZCC-name").val();
+			var AccountNumber=$inputgroup.children("#ZCC-account").val()
+			var Password=$inputgroup.children("#ZCC-password").val()
+			var Nickname=$inputgroup.children("#ZCC-nickname").val()
+			var Phone=$inputgroup.children("#ZCC-phone").val();
+			var QQ=$inputgroup.children("#ZCC-qq").val();
+			var Role=$inputgroup.children("#ZCC-power").find("option:selected").text();
+
+			if(!Name || !AccountNumber || !Password ||!Nickname ){
+				_this.layuiAlert("请输入完整的信息");
+				return false;
+			}else if(!QQ){
+				QQ="";
+			}else if(!Phone){
+				Phone="";
+			}
+
+			//存储
+			_this.loading();
+			$.ajax({
+			      "url": "https://d.apicloud.com/mcm/api/MyUser",
+			      "type": "POST",
+			      "cache": false,
+			      "headers":apiHeader,
+			      "data": 
+			      	{
+			      		"Name":Name,
+				      	"AccountNumber":AccountNumber,
+				      	"Password":Password,
+				      	"Nickname":Nickname,
+				      	"Phone":Phone,
+				      	"QQ":QQ,
+				      	"Role":Role,
+			      	}
+			}).done(function (data, status, header) {
+		    	_this.loaded();
+		    	//弹出层
+				var index=layer.open({
+				  title: '吉趣',
+				  content: '用户创建成功',
+				  btnAlign: 'c',
+				  yes:function(index, layero){
+				  	layer.close(index);	
+				  	window.history.back(-1);
+				  },
+				  cancel: function(){
+				  	layer.close(index);	
+				  	window.history.back(-1);
+				  }
+				});  
+			}).fail(function (header, status, errorThrown) {
+			      //fail body
+			      console.log(header);
+			});
+
+			//头像
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		},
+		layuiAlert:function(Content){
+			var index=layer.open({
+			  title: '吉趣',
+			  content: Content,
+			  btnAlign: 'c',
+			  yes:function(index, layero){
+			  	layer.close(index);	
+			  },
+			  cancel: function(){
+			  	layer.close(index);	
+			  }
+			});  
+		}
+	}
+	return obj;	
+})(jQuery,this)	

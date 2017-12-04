@@ -1,0 +1,36 @@
+/*
+*仅限查询，不涉及怎删改查
+*
+*使用 数据云API 查询 写法
+*/
+
+1.注册模块
+	client = new Resource(KEY.appId, KEY.appKey);
+	Model = client.Factory("task");	                //【task】换成你当前的表名，user
+	
+2.设置查询条件（要查询relation，必须使用include）
+	var filter={
+		"include":"task_apply_user",		//【relation】字段的名称
+		"includefilter":{			//设置【relation】字段的查询条件
+			"user":{			//【task_apply_user】是relation到user表中的，所以通过【"user":{}】来设置查询条件
+			"where":{"QQ":‘583072068’},		//只查询【relation】字段中，条件匹配的 行
+			"fields":["id"]			//查询出来的【relation】只显示id值
+			}
+			    			
+		},//关系表过滤
+		"where":{"_id":userid},			//当前表，只查询与当前用户id 相同的信息
+		"fields":["id"]				//只查询id
+	}
+
+3.查询
+	Model.query({					//.query进行查询，用filter来设置查询条件
+		filter:filter
+	}, function(ret,err){
+		if（ret）{
+		alert(JSON.stringify(ret));
+		}
+		else{
+		alert(JSON.stringify(err));
+		}
+	})
+

@@ -1,0 +1,99 @@
+KJT.component.formManage_Check=(function($,window,undefined){
+
+	var obj=function(option){
+		this.init(option);
+	};
+
+	obj.prototype={
+		constructor:obj,
+		init:function(option){
+			this.$content=option.$content;
+			this.$imgbox=option.$imgbox;
+			this.$headimg=option.$headimg;
+			this.$name=option.$name;
+			this.$date=option.$date;
+			this.$KJT_report=option.$KJT_report;
+			this.getId();
+			this.requestData();
+		},
+		//获取url中的id
+		getId:function(){
+			var dataId=window.location.href.split('?id=')[1];
+			this.dataId=dataId;
+		},
+		requestData:function(){
+			this.loading();
+			var _this=this;
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Forum",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			  "data":{
+			  	"filter":{
+			  		"where":{"id":_this.dataId},
+			  		"fields":["Content","Img","Promulgator","Date"],
+			  		"include":"PromulgatorPointer",
+			  		"includefilter":{
+			  			"fields":["Nickname","HeadImgUrl"]
+			  		}
+			  	}
+			  }
+			}).success(function (data, status, header) {
+			  console.log(data[0]);
+			  _this.strDOM(data[0]);
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			  alert(JSON.stringify(header));
+			});
+			$.ajax({
+			  "url": "https://d.apicloud.com/mcm/api/Report/count",
+			  "cache": false,
+			  "headers": apiHeader,
+			  "type": "GET",
+			  "data":{
+			  	"filter":{
+			  		"where":{"ID":_this.dataId},
+			  		
+			  	}
+			  }
+			}).success(function (data, status, header) {
+			  _this.$KJT_report.text(""+data.count+"人举报");
+			}).fail(function (header, status, errorThrown) {
+			  //fail body
+			  
+			});
+		},
+		//DOM
+		strDOM:function(ret){
+			this.$headimg.attr("src",ret.Promulgator.HeadImgUrl);
+			this.$name.html(ret.Promulgator.Nickname);
+			this.$date.html(ret.Date);
+			this.$content.html(ret.Content);
+			var str="";
+			for(var i=0;i<ret.Img.length;i++)
+			{
+				str+=this.strlink(ret.Img[i].url);
+			}
+			this.$imgbox.html(str);
+			this.loaded();
+		},
+
+		strlink:function(url){
+			return  '<div style="background-image:url(' + url + ');"></div>';
+		},
+		// 加载中
+		loading:function(){
+			this.layerIndex = layer.load(1, {
+			  shade: [0.3,'#000'] //0.1透明度的白色背景
+			});
+		},
+		// 加载完毕
+		loaded:function(){
+			layer.close(this.layerIndex);
+		},
+	};
+
+	return obj;
+
+})(jQuery,this);

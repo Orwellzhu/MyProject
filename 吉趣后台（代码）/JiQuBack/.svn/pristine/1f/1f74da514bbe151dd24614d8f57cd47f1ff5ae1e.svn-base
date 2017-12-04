@@ -1,0 +1,72 @@
+<style type="text/css">
+	.ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding:0 100px;overflow-x:hidden;overflow-y:scroll;background: #fdfdfd}
+	.ZCC-alertBox{width: 80%;height: auto;margin: 0 auto;margin-top: 10px}	
+	.ZCC-content-height{height: 600px;overflow-x:hidden;overflow-y:scroll;padding:10px  50px;}
+</style>
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		   <li>信息管理</li>
+		   <li><a href="#messageManage">通知管理</a></li>
+		   <li>通知详情</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div class="ZCC-infobox">
+			<div class="ZCC-picbox">
+				<img src="" id="ZCC-HeadImg">
+			</div>
+
+			<div style="display: inline;" class="ZCC-marginb-10" id="ZCC-updataImg"> 
+			</div>
+
+			<div id="ZCC-inputbox">
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >通知标题</span>
+				  <input type="text" class="form-control" placeholder="请输入通知标题" id="ZCC-title" readonly="readonly">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >发布日期</span>
+				  <input type="text" class="form-control" placeholder="格式 2017-11-06 16：04" id="ZCC-date" readonly="readonly">
+				</div>
+				<div class="input-group ZCC-margint-10">
+				  <span class="input-group-addon" >发布单位</span>
+				  <input type="text" class="form-control" placeholder="请输入发布单位" id="ZCC-schPub" readonly="readonly">
+				</div>
+			</div>
+			<div id="ZCC-editBox">
+				<div id="ZCC-editBox-body">
+					<div class="ZCC-content">
+						
+					</div>
+				</div>
+			</div>
+
+
+			<div  class="ZCC-alertBox">
+				<!-- 上传失败 -->
+			</div>
+
+		</div>
+	</div>
+</div>
+<script src="components/infoManage/messageManage/check.js"></script>
+<script type="text/javascript">
+	new ZCC.component.messageManage({
+		$ImgBox:$("#ZCC-HeadImg"),
+		$Title:$("#ZCC-title"),
+		$SchPub:$("#ZCC-schPub"),
+		$dateBox:$("#ZCC-date"),
+		$Editor:$(".ZCC-content"),
+	});
+</script>

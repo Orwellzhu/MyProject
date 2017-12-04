@@ -1,0 +1,76 @@
+<style type="text/css">
+	#ZCC-infobox{border: 1px solid #cccccc;border-radius:10px;width: 50%;margin: 0 auto;overflow: hidden;padding: 20px;margin-bottom: 20px;text-align: center;}
+	.ZCC-picbox{width: 300px;height: 200px;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;padding: 2px;margin-bottom: 10px}
+	.ZCC-picbox img{width:100%;height: 100%;border-radius:4px;background-color: #cccccc}
+	#ZCC-inputbox{width: 80%;height: auto;margin: 0 auto;}
+	.ZCC-margint-10{margin-top: 10px}
+	.ZCC-marginb-10{margin-bottom: 10px}
+	#ZCC-editBox{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#ZCC-editBox-header{height: 35px;background-color: #EEEEEE;border-radius:4px 4px 0 0;text-align: center;line-height: 35px;}
+	#ZCC-editBox-body{height: 600px;border-radius: 0 0 4px 4px;padding: 100px;overflow-x:hidden;overflow-y:scroll}
+	#LGQ-inputbox{width:80%;height: auto;margin:0 auto}
+	#LGQ-inputbox-content{width: 80%;margin: 0 auto;border: 1px solid #cccccc;border-radius:4px;margin-top: 10px }
+	#LGQ-inputbox-body{width: 100%;height: 600px;border: 1px solid #cccccc}
+	#LGQ-inputbox-header{height:35px;text-align: center;background-color: #EEEEEE;border-radius:4px 4px 0 0;line-height: 35px;width:100%}
+	#LGQ-editBox-body{margin:0 auto;width: 100%;height: 105px;border: 1px solid #cccccc}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息管理</li>
+		  <li><a href="#articlePublic">活动管理</a></li>
+		  <li>审查活动</li>
+		</ol>
+	</div>
+</div>
+<div id="ZCC-infobox">
+<div class="row">
+	<div class="container-fluid" >
+		<div id="LGQ-inputbox">
+		    <div class="ZCC-picbox input-group">
+				<img src="" id="LGQ-HeadImg">
+			</div>
+		    <div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >活动名称</span>
+					  <input type="text" class="form-control" placeholder="Activityname" id="LGQ-name" readonly="readonly">
+			</div>
+			<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >主办单位</span>
+					  <input type="text" class="form-control" placeholder="Activityorganizer" id="LGQ-organizer" readonly="readonly">
+			</div>
+			<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >主办地点</span>
+					  <input type="text" class="form-control" placeholder="Activityplace" id="LGQ-place" readonly="readonly">
+			</div>
+			<div class="input-group ZCC-margint-10">
+					  <span class="input-group-addon" >主办时间</span>
+					  <input type="text" class="form-control" placeholder="Activitytime" id="LGQ-time" readonly="readonly">
+			</div>
+			<div id="LGQ-inputbox-content" class="input-group">
+				<div id="LGQ-inputbox-header">活动内容</div>
+				<textarea id="LGQ-inputbox-body" class="LGQ-content container-fluid input-group" readonly="readonly"></textarea>
+			</div>
+		</div>
+		<div id="ZCC-editBox">
+				<div id="ZCC-editBox-header">发表评价</div>
+				<textarea id="LGQ-editBox-body" ></textarea>
+			</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="container-fluid" >
+		<div style="width: 300px;margin: 0 auto;overflow: hidden;" id="ZCC-buttonBox">
+			<button type="button" class="btn btn-danger" style="float: left;">&nbsp&nbsp&nbsp&nbsp通过&nbsp&nbsp&nbsp&nbsp</button>
+			<button type="button" class="btn btn-primary" style="float: right;">&nbsp&nbsp&nbsp&nbsp不通过&nbsp&nbsp&nbsp&nbsp</button>
+		</div>
+	</div>
+</div>
+</div>
+<script src="components/infoManage/activityManage/examineactivity.js"></script>
+<script type="text/javascript">
+	new LGQ.component.activityManage_examineactivity({
+          $TableContentWrapper:$("#LGQ-inputbox"),
+	});
+</script>

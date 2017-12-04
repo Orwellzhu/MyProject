@@ -1,0 +1,82 @@
+
+	<div class="row">
+		<div class="container-fluid" >
+			<ol class="breadcrumb">
+			  <li>用户管理</li>
+			  <li>账户管理</li>
+			</ol>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">搜索</button>
+		      </span>
+		    </div>
+		</div>
+
+
+		<div class="col-lg-2">
+			<a href="#accountManage_Create"><button type="button" class="btn  btn-primary"> 创建用户 </button></a>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 20px">
+		<div class="container-fluid" >
+	        <table class="table table-bordered table-hover">
+	            <tbody>
+	            	<tr class="active">
+		                <th width="3%">序号</th>
+		                <th width="10%">账户</th>
+		                <th width="10%">姓名</th>
+		                <th width="10%">密码</th>  
+		                <th width="15%">昵称</th>
+		                <th width="15%">电话</th>
+		                <th width="15%">权限</th>
+		                <th >操作</th>
+		            </tr>
+	            </tbody>
+	            <tbody id="arcListView">
+<!-- 					<tr>
+		                <th>1</th>
+		                <th>21150422</th>
+		                <th>朱陈超</th>
+		                <th>970566</th>
+		                <th>大海画家</th>
+		                <th>15601779516</th>
+		                <th>管理员</th>
+		                <th>			                	
+		                	<button type="button" class="btn btn-default btn-sm">查看</button>
+		                	<button type="button" class="btn btn-primary btn-sm">编辑</button>
+		                	<button type="button" class="btn btn-danger btn-sm">删除</button>
+		                </th>
+		            </tr> -->
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	<div class="row">
+	<div class="container-fluid">
+		<ul class="pagination" id="ZCC-pager">
+			
+	    </ul>
+	    <div class="pageJump">
+			<span>跳转到</span>
+			<input type="text"/ style="width:50px">
+			<span>页</span>
+			<button type="button" class="button">确定</button>
+		</div>
+	</div>
+</div>
+<script src="components/userManage/accountManage/index.js"></script>
+<script type="text/javascript">
+	var accountManage=new ZCC.component.accountManage({
+		$TableContentWrapper:$("#arcListView"),
+		$Pager:$("#ZCC-pager"),
+	});
+</script>
+

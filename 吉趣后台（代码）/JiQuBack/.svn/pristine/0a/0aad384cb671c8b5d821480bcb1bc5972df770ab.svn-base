@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>登陆丨Sharelink</title>
+<link rel="stylesheet" href="components/login/css/style.css">
+<body>
+
+<div class="login-container">
+	<h1>ChuangQuPTP</h1>
+	
+	<div class="connect">
+		<p>Link the world. Share to world.</p>
+	</div>
+	
+	<form class="form-signin" name="myForm" id="loginForm">
+		<div>
+			<input type="text" name="username" class="username form-control" placeholder="用户名" autofocus autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password form-control" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button type="button">登 陆</button>
+	</form>
+
+
+
+</div>
+
+</body>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<!--背景图片自动更换-->
+<script src="components/login/js/login.js"></script>
+<script src="components/login/js/supersized.3.2.7.min.js"></script>
+<script src="components/login/js/supersized-init.js"></script>
+<!--表单验证-->
+<script src="components/login/js/jquery.validate.min.js?var1.14.0"></script>
+<!--全局js-->
+<script src="assets/js/namespace.js"></script>
+<script src="assets/js/sha1.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/cookie.js"></script>
+<!-- layui -->
+<script src="assets/layui.all.js"></script>
+<!-- 操作 -->
+<script src="components/login/login.js"></script>
+<script type="text/javascript">
+	new ZCC.component.login({
+		$NameInput:$(".username"),
+		$PasswordInput:$(".password"),
+		$Button:$("button"),
+	});
+</script>
+</html>

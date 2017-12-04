@@ -1,0 +1,45 @@
+<style type="text/css">
+.KJT-mt-20{
+		margin-top: 20px;
+	}
+</style>
+
+<div class="row">
+	<div class="container-fluid" >
+		<ol class="breadcrumb">
+		  <li>信息管理</li>
+		  <li><a href="#formManage">论坛管理</a></li>
+		  <li><a id="ktj_breadcrumb0">帖子详情</a></li>
+		  <li><a id="ktj_breadcrumb">查看举报</a></li>
+		</ol>
+	</div>
+</div>
+<div class="row KJT-mt-20 kjt_noReport">
+	<div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <tbody>
+            	<tr class="active">
+            		<th width="3%">序号</th>
+	                <th width="10%">举报者</th>
+	                <th width="15%">举报时间</th>
+	                <th width="15%">举报类别</th>
+	                <th width="57%">举报说明</th>  
+	            </tr>
+            </tbody>
+            <tbody id="reportTable">
+            	
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="components/infoManage/formManage/checkreport.js"></script>
+<script type="text/javascript">
+	new KJT.component.formManage_Checkreport({
+		// 内容
+		$ktj_breadcrumb:$("#ktj_breadcrumb"),
+		$ktj_breadcrumb0:$("#ktj_breadcrumb0"),
+		$reportTable:$("#reportTable"),
+		$kjt_noReport:$(".kjt_noReport"),
+	});
+</script>
